@@ -1,0 +1,411 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~react-perfect-scrollbar/dist/css/styles.css";
+@import "~c3/c3.min.css";
+@import "~react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+
+@import "components/kit/vendors/antd/style";
+@import "components/kit/vendors/bootstrap/style";
+@import "components/kit/vendors/perfect-scrollbar/style";
+@import "components/kit/vendors/nprogress/style";
+@import "components/kit/vendors/chartist/style";
+@import "components/kit/vendors/chartist-tooltip-plugin/style";
+@import "components/kit/vendors/jvectormap/style";
+@import "components/kit/vendors/react-sortable-tree/style";
+@import "components/kit/vendors/react-draft-wysiwyg/style";
+
+@import "components/kit/core/style"; // Clean UI KIT styles
+@import "components/cleanui/styles/style"; // Clean UI styles
+
+.ant-layout-footer{
+  background: #F4F4F4 !important;
+}
+
+.ant-tooltip-inner {
+  min-width: 30px;
+  min-height: 32px;
+  padding: 6px 8px;
+  color: #fff !important;
+  text-align: left;
+  text-decoration: none;
+  word-wrap: break-word;
+  background-color: #000000bf;
+  border-radius: 2px;
+  box-shadow: 0 3px 6px -4px #0000001f, 0 6px 16px #00000014, 0 9px 28px 8px #0000000d;
+}
+
+.ant-select-tree-list-holder{
+  overflow-y: auto !important;
+  max-height: 256px;
+}
+
+.ant-tooltip-inner a{
+  color: #fff !important;
+}
+
+.block {
+  display: block !important;
+}
+
+.flex {
+  display: flex !important;
+}
+
+.alignCenter {
+  align-items: center !important;
+}
+
+.justifyCenter {
+  justify-content: center !important;
+}
+
+.center {
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.alignRight {
+  align-items: end !important;
+}
+
+.justifyRight {
+  justify-content: end !important;
+}
+
+.right {
+  align-items: end !important;
+  justify-content: end !important;
+  text-align: end !important;
+}
+
+.avatar-status-name {
+  font-weight: 500;
+  color: #1a3353
+}
+
+.ant-avatar-blue {
+  background: rgba(62, 121, 247, .1) !important;
+  color: #3e79f7 !important;
+}
+
+.ant-avatar-purple {
+  background: rgba(164, 97, 216, .1);
+  color: #a461d8
+}
+
+.ant-avatar-cyan {
+  background: rgba(4, 209, 130, .1) !important;
+  color: #04d182 !important;
+}
+
+.ant-avatar-green {
+  background: rgba(33, 181, 115, .1) !important;
+  color: #21b573 !important;
+}
+
+.ant-avatar-magenta,
+.ant-avatar-pink {
+  background: rgba(235, 47, 150, .1) !important;
+  color: #eb2f96 !important;
+}
+
+.ant-avatar-red {
+  background: rgba(222, 68, 54, .1) !important;
+  color: #de4436 !important;
+}
+
+.ant-avatar-orange {
+  background: rgba(250, 140, 22, .1);
+  color: #fa8c16
+}
+
+.ant-avatar-yellow {
+  background: rgba(250, 219, 20, .1);
+  color: #fadb14
+}
+
+.ant-avatar-volcano {
+  background: rgba(255, 107, 114, .1) !important;
+  color: #ff6b72 !important;
+}
+
+.ant-avatar-geekblue {
+  background: rgba(23, 188, 255, .1);
+  color: #17bcff
+}
+
+.ant-avatar-lime {
+  background: rgba(160, 217, 17, .1);
+  color: #a0d911
+}
+
+.ant-avatar-gold {
+  background: rgba(255, 197, 66, .1) !important;
+  color: #ffc542 !important;
+}
+
+.ant-avatar-primary {
+  background: rgba(62, 121, 247, .1) !important;
+  color: #3e79f7 !important;
+}
+
+.ant-avatar-secondary {
+  background: rgba(164, 97, 216, .1);
+  color: #a461d8
+}
+
+.ant-avatar-success {
+  background: rgba(4, 209, 130, .1);
+  color: #04d182
+}
+
+.ant-avatar-sm.ant-avatar-icon {
+  font-size: 14px
+}
+
+.ant-avatar-square {
+  border-radius: .625rem !important;
+}
+
+
+.ant-modal-title {
+  margin: 0;
+  color: #666666 !important;
+  font-weight: 700 !important;
+  font-size: 20px !important;
+  line-height: 22px;
+  word-wrap: break-word;
+}
+
+.ant-modal {
+  box-sizing: border-box;
+  color: #666666;
+  font-size: 14px;
+  font-variant: tabular-nums;
+  line-height: 1.5;
+  list-style: none;
+  -webkit-font-feature-settings: 'tnum';
+  font-feature-settings: 'tnum';
+  pointer-events: none;
+  position: relative;
+  top: 20px !important;
+  width: auto;
+  max-width: calc(100vw - 32px);
+  margin: 0 auto;
+  padding: 0 0 24px
+}
+
+.ant-card {
+  box-sizing: border-box;
+  padding: 0;
+  color: #455560;
+  font-size: 14px;
+  font-variant: tabular-nums;
+  line-height: 1.5;
+  list-style: none;
+  -webkit-font-feature-settings: 'tnum';
+  font-feature-settings: 'tnum';
+  position: relative;
+  background: #fff;
+  border-radius: .625rem !important;
+}
+
+.ant-avatar>img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover
+}
+
+.ant-avatar-info {
+  background: rgba(62, 121, 247, .1);
+  color: #3e79f7
+}
+
+.ant-avatar-warning {
+  background: rgba(255, 197, 66, .1);
+  color: #ffc542
+}
+
+.ant-avatar-danger {
+  background: rgba(255, 107, 114, .1);
+  color: #ff6b72
+}
+
+.ant-avatar-gray {
+  background: rgba(69, 85, 96, .1);
+  color: #455560
+}
+
+.ant-avatar-gray-light {
+  background: rgba(114, 132, 154, .1);
+  color: #72849a
+}
+
+.ant-avatar-gray-lighter {
+  background: rgba(237, 237, 237, .1);
+  color: #ededed
+}
+
+.ant-avatar-gray-lightest {
+  background: rgba(247, 247, 248, .1);
+  color: #f7f7f8
+}
+
+.ant-avatar-dark {
+  background: rgba(26, 51, 83, .1);
+  color: #1a3353
+}
+
+.ant-form-item-control-input-content {
+  display: flex;
+}
+
+@font-face {
+  font-family: SansProLight;
+  src: url("/fonts/SourceSansPro-Light.ttf");
+}
+
+@font-face {
+  font-family: SansProRegular;
+  src: url("/fonts/SourceSansPro-Regular.ttf");
+}
+
+.treeDot {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+main {
+  background-color: #fafafa;
+}
+
+.mainHeader {
+  font-weight: bold !important;
+  font-size: 16px !important;
+  color: black !important;
+}
+
+.mainHeaderContent {
+  font-weight: bold !important;
+  font-size: 15px !important;
+}
+
+.container {
+  background: rgba(255, 255, 255, 255) none repeat scroll 0% 0%;
+  margin: 5px 0px;
+  padding: 8px;
+  box-shadow: 0 0 1px 1px #aaa;
+  margin-bottom: 7px;
+}
+
+// override default variables for BaseTable
+$table-prefix: BaseTable;
+@import "~react-base-table/es/_BaseTable.scss";
+
+.#{$table-prefix}__header-cell:first-child {
+  padding-left: 7.5px !important;
+}
+
+.#{$table-prefix} {
+  .#{$table-prefix}__row-cell {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .#{$table-prefix}__header-cell-text {
+    width: 100% !important;
+    font-weight: 600;
+  }
+
+  .#{$table-prefix}__row:nth-child(odd) {
+    background-color: white;
+  }
+
+
+  .#{$table-prefix}__body {
+    overflow-x: hidden !important;
+  }
+
+  .#{$table-prefix}__row-cell {
+    div {
+      width: 100%;
+    }
+  }
+
+  .#{$table-prefix}__row-cell:first-child {
+    padding-left: 7.5px !important;
+  }
+
+  .#{$table-prefix}__sort-indicator {
+    position: absolute;
+    right: 0;
+
+  }
+
+  .rowStyle {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    margin-left: 8px;
+    align-items: center;
+  }
+
+  //Blue
+  .rowStyle1 {
+    background: #e9fbff;
+  }
+
+  //Green
+  .rowStyle2 {
+    background: #bbddbb;
+  }
+
+  //Yellow
+  .rowStyle3 {
+    background: #f8f693;
+  }
+
+  //Orange
+  .rowStyle4 {
+    background: #f39a51;
+  }
+
+  //Red
+  .rowStyle5 {
+    background: #f09595;
+  }
+
+  //Lila
+  .rowStyle6 {
+    background: #fdc9fd;
+  }
+}
+
+.card-header-flex {
+  justify-content: space-between;
+}
+
+.language-list-item {
+  cursor: pointer;
+  margin: 5px;
+}
+
+.language-list-item:hover {
+  text-decoration: underline;
+}
+
+.language-selected {
+  margin: 20px;
+}
+
+.hr-text {
+  display: flex;
+  flex-direction: row;
+}
+
+.hr-text hr,
+.hr-text p {
+  flex: 1;
+  width: 100%;
+}

@@ -1,0 +1,4766 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css');
+
+.leaflet-cluster-anim .leaflet-marker-icon,
+.leaflet-cluster-anim .leaflet-marker-shadow {
+	-webkit-transition: -webkit-transform 0.3s ease-out, opacity 0.3s ease-in;
+	-moz-transition: -moz-transform 0.3s ease-out, opacity 0.3s ease-in;
+	-o-transition: -o-transform 0.3s ease-out, opacity 0.3s ease-in;
+	transition: transform 0.3s ease-out, opacity 0.3s ease-in;
+}
+
+.leaflet-cluster-spider-leg {
+	/* stroke-dashoffset (duration and function) should match with leaflet-marker-icon transform in order to track it exactly */
+	-webkit-transition: -webkit-stroke-dashoffset 0.3s ease-out, -webkit-stroke-opacity 0.3s ease-in;
+	-moz-transition: -moz-stroke-dashoffset 0.3s ease-out, -moz-stroke-opacity 0.3s ease-in;
+	-o-transition: -o-stroke-dashoffset 0.3s ease-out, -o-stroke-opacity 0.3s ease-in;
+	transition: stroke-dashoffset 0.3s ease-out, stroke-opacity 0.3s ease-in;
+}
+
+.leaflet-container {
+	height: 100%;
+	width: 100%;
+}
+
+.vis-item.vis-background.negative {
+	background-color: rgba(255, 0, 0, 0.3);
+}
+
+.vis-item.vis-background.positive {
+	background-color: rgba(30, 209, 99, 0.3);
+}
+
+.vis-custom-time {
+	background-color: #6e94ff;
+	cursor: move;
+	z-index: 1;
+	width: 13px !important;
+}
+
+.missing-translate-list-item {
+	margin-top: 10px;
+	padding: 10px;
+	height: 40px;
+	border: 1px solid #f0f0f0;
+}
+
+.missing-translate-dropdown-background {
+	background-color: #fff;
+	border-radius: 4px;
+	color: rgba(0, 0, 0, 0.87);
+	width: 100%;
+	float: left;
+	font-size: medium;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.loadingGifBackground {
+	background-size: 'contain';
+	height: 345;
+	width: '100%';
+	background-color: '#fff';
+	background-repeat: 'no-repeat';
+	background-position: 'center';
+}
+
+.rotated-markerdiv {
+	text-align: center;
+	background-color: none;
+	border: none;
+	z-index: 0;
+}
+
+.rotate-north {
+	transform: rotate(0);
+	/* CSS3 */
+	-moz-transform: rotate(0);
+	/* Firefox */
+	-webkit-transform: rotate(0);
+	/* Webkit */
+	-o-transform: rotate(0);
+	/* Opera */
+	-ms-transform: rotate(0);
+	/* IE 9 */
+}
+
+
+.rotate-0 {
+	transform: rotate(0deg);
+	/* CSS3 */
+	-moz-transform: rotate(0deg);
+	/* Firefox */
+	-webkit-transform: rotate(0deg);
+	/* Webkit */
+	-o-transform: rotate(0deg);
+	/* Opera */
+	-ms-transform: rotate(0deg);
+	/* IE 9 */
+}
+
+.rotate-1 {
+	transform: rotate(1deg);
+	/* CSS3 */
+	-moz-transform: rotate(1deg);
+	/* Firefox */
+	-webkit-transform: rotate(1deg);
+	/* Webkit */
+	-o-transform: rotate(1deg);
+	/* Opera */
+	-ms-transform: rotate(1deg);
+	/* IE 9 */
+}
+
+.rotate-2 {
+	transform: rotate(2deg);
+	/* CSS3 */
+	-moz-transform: rotate(2deg);
+	/* Firefox */
+	-webkit-transform: rotate(2deg);
+	/* Webkit */
+	-o-transform: rotate(2deg);
+	/* Opera */
+	-ms-transform: rotate(2deg);
+	/* IE 9 */
+}
+
+.rotate-3 {
+	transform: rotate(3deg);
+	/* CSS3 */
+	-moz-transform: rotate(3deg);
+	/* Firefox */
+	-webkit-transform: rotate(3deg);
+	/* Webkit */
+	-o-transform: rotate(3deg);
+	/* Opera */
+	-ms-transform: rotate(3deg);
+	/* IE 9 */
+}
+
+.rotate-4 {
+	transform: rotate(4deg);
+	/* CSS3 */
+	-moz-transform: rotate(4deg);
+	/* Firefox */
+	-webkit-transform: rotate(4deg);
+	/* Webkit */
+	-o-transform: rotate(4deg);
+	/* Opera */
+	-ms-transform: rotate(4deg);
+	/* IE 9 */
+}
+
+.rotate-5 {
+	transform: rotate(5deg);
+	/* CSS3 */
+	-moz-transform: rotate(5deg);
+	/* Firefox */
+	-webkit-transform: rotate(5deg);
+	/* Webkit */
+	-o-transform: rotate(5deg);
+	/* Opera */
+	-ms-transform: rotate(5deg);
+	/* IE 9 */
+}
+
+.rotate-6 {
+	transform: rotate(6deg);
+	/* CSS3 */
+	-moz-transform: rotate(6deg);
+	/* Firefox */
+	-webkit-transform: rotate(6deg);
+	/* Webkit */
+	-o-transform: rotate(6deg);
+	/* Opera */
+	-ms-transform: rotate(6deg);
+	/* IE 9 */
+}
+
+.rotate-7 {
+	transform: rotate(7deg);
+	/* CSS3 */
+	-moz-transform: rotate(7deg);
+	/* Firefox */
+	-webkit-transform: rotate(7deg);
+	/* Webkit */
+	-o-transform: rotate(7deg);
+	/* Opera */
+	-ms-transform: rotate(7deg);
+	/* IE 9 */
+}
+
+.rotate-8 {
+	transform: rotate(8deg);
+	/* CSS3 */
+	-moz-transform: rotate(8deg);
+	/* Firefox */
+	-webkit-transform: rotate(8deg);
+	/* Webkit */
+	-o-transform: rotate(8deg);
+	/* Opera */
+	-ms-transform: rotate(8deg);
+	/* IE 9 */
+}
+
+.rotate-9 {
+	transform: rotate(9deg);
+	/* CSS3 */
+	-moz-transform: rotate(9deg);
+	/* Firefox */
+	-webkit-transform: rotate(9deg);
+	/* Webkit */
+	-o-transform: rotate(9deg);
+	/* Opera */
+	-ms-transform: rotate(9deg);
+	/* IE 9 */
+}
+
+.rotate-10 {
+	transform: rotate(10deg);
+	/* CSS3 */
+	-moz-transform: rotate(10deg);
+	/* Firefox */
+	-webkit-transform: rotate(10deg);
+	/* Webkit */
+	-o-transform: rotate(10deg);
+	/* Opera */
+	-ms-transform: rotate(10deg);
+	/* IE 9 */
+}
+
+.rotate-11 {
+	transform: rotate(11deg);
+	/* CSS3 */
+	-moz-transform: rotate(11deg);
+	/* Firefox */
+	-webkit-transform: rotate(11deg);
+	/* Webkit */
+	-o-transform: rotate(11deg);
+	/* Opera */
+	-ms-transform: rotate(11deg);
+	/* IE 9 */
+}
+
+.rotate-12 {
+	transform: rotate(12deg);
+	/* CSS3 */
+	-moz-transform: rotate(12deg);
+	/* Firefox */
+	-webkit-transform: rotate(12deg);
+	/* Webkit */
+	-o-transform: rotate(12deg);
+	/* Opera */
+	-ms-transform: rotate(12deg);
+	/* IE 9 */
+}
+
+.rotate-13 {
+	transform: rotate(13deg);
+	/* CSS3 */
+	-moz-transform: rotate(13deg);
+	/* Firefox */
+	-webkit-transform: rotate(13deg);
+	/* Webkit */
+	-o-transform: rotate(13deg);
+	/* Opera */
+	-ms-transform: rotate(13deg);
+	/* IE 9 */
+}
+
+.rotate-14 {
+	transform: rotate(14deg);
+	/* CSS3 */
+	-moz-transform: rotate(14deg);
+	/* Firefox */
+	-webkit-transform: rotate(14deg);
+	/* Webkit */
+	-o-transform: rotate(14deg);
+	/* Opera */
+	-ms-transform: rotate(14deg);
+	/* IE 9 */
+}
+
+.rotate-15 {
+	transform: rotate(15deg);
+	/* CSS3 */
+	-moz-transform: rotate(15deg);
+	/* Firefox */
+	-webkit-transform: rotate(15deg);
+	/* Webkit */
+	-o-transform: rotate(15deg);
+	/* Opera */
+	-ms-transform: rotate(15deg);
+	/* IE 9 */
+}
+
+.rotate-16 {
+	transform: rotate(16deg);
+	/* CSS3 */
+	-moz-transform: rotate(16deg);
+	/* Firefox */
+	-webkit-transform: rotate(16deg);
+	/* Webkit */
+	-o-transform: rotate(16deg);
+	/* Opera */
+	-ms-transform: rotate(16deg);
+	/* IE 9 */
+}
+
+.rotate-17 {
+	transform: rotate(17deg);
+	/* CSS3 */
+	-moz-transform: rotate(17deg);
+	/* Firefox */
+	-webkit-transform: rotate(17deg);
+	/* Webkit */
+	-o-transform: rotate(17deg);
+	/* Opera */
+	-ms-transform: rotate(17deg);
+	/* IE 9 */
+}
+
+.rotate-18 {
+	transform: rotate(18deg);
+	/* CSS3 */
+	-moz-transform: rotate(18deg);
+	/* Firefox */
+	-webkit-transform: rotate(18deg);
+	/* Webkit */
+	-o-transform: rotate(18deg);
+	/* Opera */
+	-ms-transform: rotate(18deg);
+	/* IE 9 */
+}
+
+.rotate-19 {
+	transform: rotate(19deg);
+	/* CSS3 */
+	-moz-transform: rotate(19deg);
+	/* Firefox */
+	-webkit-transform: rotate(19deg);
+	/* Webkit */
+	-o-transform: rotate(19deg);
+	/* Opera */
+	-ms-transform: rotate(19deg);
+	/* IE 9 */
+}
+
+.rotate-20 {
+	transform: rotate(20deg);
+	/* CSS3 */
+	-moz-transform: rotate(20deg);
+	/* Firefox */
+	-webkit-transform: rotate(20deg);
+	/* Webkit */
+	-o-transform: rotate(20deg);
+	/* Opera */
+	-ms-transform: rotate(20deg);
+	/* IE 9 */
+}
+
+.rotate-21 {
+	transform: rotate(21deg);
+	/* CSS3 */
+	-moz-transform: rotate(21deg);
+	/* Firefox */
+	-webkit-transform: rotate(21deg);
+	/* Webkit */
+	-o-transform: rotate(21deg);
+	/* Opera */
+	-ms-transform: rotate(21deg);
+	/* IE 9 */
+}
+
+.rotate-22 {
+	transform: rotate(22deg);
+	/* CSS3 */
+	-moz-transform: rotate(22deg);
+	/* Firefox */
+	-webkit-transform: rotate(22deg);
+	/* Webkit */
+	-o-transform: rotate(22deg);
+	/* Opera */
+	-ms-transform: rotate(22deg);
+	/* IE 9 */
+}
+
+.rotate-23 {
+	transform: rotate(23deg);
+	/* CSS3 */
+	-moz-transform: rotate(23deg);
+	/* Firefox */
+	-webkit-transform: rotate(23deg);
+	/* Webkit */
+	-o-transform: rotate(23deg);
+	/* Opera */
+	-ms-transform: rotate(23deg);
+	/* IE 9 */
+}
+
+.rotate-24 {
+	transform: rotate(24deg);
+	/* CSS3 */
+	-moz-transform: rotate(24deg);
+	/* Firefox */
+	-webkit-transform: rotate(24deg);
+	/* Webkit */
+	-o-transform: rotate(24deg);
+	/* Opera */
+	-ms-transform: rotate(24deg);
+	/* IE 9 */
+}
+
+.rotate-25 {
+	transform: rotate(25deg);
+	/* CSS3 */
+	-moz-transform: rotate(25deg);
+	/* Firefox */
+	-webkit-transform: rotate(25deg);
+	/* Webkit */
+	-o-transform: rotate(25deg);
+	/* Opera */
+	-ms-transform: rotate(25deg);
+	/* IE 9 */
+}
+
+.rotate-26 {
+	transform: rotate(26deg);
+	/* CSS3 */
+	-moz-transform: rotate(26deg);
+	/* Firefox */
+	-webkit-transform: rotate(26deg);
+	/* Webkit */
+	-o-transform: rotate(26deg);
+	/* Opera */
+	-ms-transform: rotate(26deg);
+	/* IE 9 */
+}
+
+.rotate-27 {
+	transform: rotate(27deg);
+	/* CSS3 */
+	-moz-transform: rotate(27deg);
+	/* Firefox */
+	-webkit-transform: rotate(27deg);
+	/* Webkit */
+	-o-transform: rotate(27deg);
+	/* Opera */
+	-ms-transform: rotate(27deg);
+	/* IE 9 */
+}
+
+.rotate-28 {
+	transform: rotate(28deg);
+	/* CSS3 */
+	-moz-transform: rotate(28deg);
+	/* Firefox */
+	-webkit-transform: rotate(28deg);
+	/* Webkit */
+	-o-transform: rotate(28deg);
+	/* Opera */
+	-ms-transform: rotate(28deg);
+	/* IE 9 */
+}
+
+.rotate-29 {
+	transform: rotate(29deg);
+	/* CSS3 */
+	-moz-transform: rotate(29deg);
+	/* Firefox */
+	-webkit-transform: rotate(29deg);
+	/* Webkit */
+	-o-transform: rotate(29deg);
+	/* Opera */
+	-ms-transform: rotate(29deg);
+	/* IE 9 */
+}
+
+.rotate-30 {
+	transform: rotate(30deg);
+	/* CSS3 */
+	-moz-transform: rotate(30deg);
+	/* Firefox */
+	-webkit-transform: rotate(30deg);
+	/* Webkit */
+	-o-transform: rotate(30deg);
+	/* Opera */
+	-ms-transform: rotate(30deg);
+	/* IE 9 */
+}
+
+.rotate-31 {
+	transform: rotate(31deg);
+	/* CSS3 */
+	-moz-transform: rotate(31deg);
+	/* Firefox */
+	-webkit-transform: rotate(31deg);
+	/* Webkit */
+	-o-transform: rotate(31deg);
+	/* Opera */
+	-ms-transform: rotate(31deg);
+	/* IE 9 */
+}
+
+.rotate-32 {
+	transform: rotate(32deg);
+	/* CSS3 */
+	-moz-transform: rotate(32deg);
+	/* Firefox */
+	-webkit-transform: rotate(32deg);
+	/* Webkit */
+	-o-transform: rotate(32deg);
+	/* Opera */
+	-ms-transform: rotate(32deg);
+	/* IE 9 */
+}
+
+.rotate-33 {
+	transform: rotate(33deg);
+	/* CSS3 */
+	-moz-transform: rotate(33deg);
+	/* Firefox */
+	-webkit-transform: rotate(33deg);
+	/* Webkit */
+	-o-transform: rotate(33deg);
+	/* Opera */
+	-ms-transform: rotate(33deg);
+	/* IE 9 */
+}
+
+.rotate-34 {
+	transform: rotate(34deg);
+	/* CSS3 */
+	-moz-transform: rotate(34deg);
+	/* Firefox */
+	-webkit-transform: rotate(34deg);
+	/* Webkit */
+	-o-transform: rotate(34deg);
+	/* Opera */
+	-ms-transform: rotate(34deg);
+	/* IE 9 */
+}
+
+.rotate-35 {
+	transform: rotate(35deg);
+	/* CSS3 */
+	-moz-transform: rotate(35deg);
+	/* Firefox */
+	-webkit-transform: rotate(35deg);
+	/* Webkit */
+	-o-transform: rotate(35deg);
+	/* Opera */
+	-ms-transform: rotate(35deg);
+	/* IE 9 */
+}
+
+.rotate-36 {
+	transform: rotate(36deg);
+	/* CSS3 */
+	-moz-transform: rotate(36deg);
+	/* Firefox */
+	-webkit-transform: rotate(36deg);
+	/* Webkit */
+	-o-transform: rotate(36deg);
+	/* Opera */
+	-ms-transform: rotate(36deg);
+	/* IE 9 */
+}
+
+.rotate-37 {
+	transform: rotate(37deg);
+	/* CSS3 */
+	-moz-transform: rotate(37deg);
+	/* Firefox */
+	-webkit-transform: rotate(37deg);
+	/* Webkit */
+	-o-transform: rotate(37deg);
+	/* Opera */
+	-ms-transform: rotate(37deg);
+	/* IE 9 */
+}
+
+.rotate-38 {
+	transform: rotate(38deg);
+	/* CSS3 */
+	-moz-transform: rotate(38deg);
+	/* Firefox */
+	-webkit-transform: rotate(38deg);
+	/* Webkit */
+	-o-transform: rotate(38deg);
+	/* Opera */
+	-ms-transform: rotate(38deg);
+	/* IE 9 */
+}
+
+.rotate-39 {
+	transform: rotate(39deg);
+	/* CSS3 */
+	-moz-transform: rotate(39deg);
+	/* Firefox */
+	-webkit-transform: rotate(39deg);
+	/* Webkit */
+	-o-transform: rotate(39deg);
+	/* Opera */
+	-ms-transform: rotate(39deg);
+	/* IE 9 */
+}
+
+.rotate-40 {
+	transform: rotate(40deg);
+	/* CSS3 */
+	-moz-transform: rotate(40deg);
+	/* Firefox */
+	-webkit-transform: rotate(40deg);
+	/* Webkit */
+	-o-transform: rotate(40deg);
+	/* Opera */
+	-ms-transform: rotate(40deg);
+	/* IE 9 */
+}
+
+.rotate-41 {
+	transform: rotate(41deg);
+	/* CSS3 */
+	-moz-transform: rotate(41deg);
+	/* Firefox */
+	-webkit-transform: rotate(41deg);
+	/* Webkit */
+	-o-transform: rotate(41deg);
+	/* Opera */
+	-ms-transform: rotate(41deg);
+	/* IE 9 */
+}
+
+.rotate-42 {
+	transform: rotate(42deg);
+	/* CSS3 */
+	-moz-transform: rotate(42deg);
+	/* Firefox */
+	-webkit-transform: rotate(42deg);
+	/* Webkit */
+	-o-transform: rotate(42deg);
+	/* Opera */
+	-ms-transform: rotate(42deg);
+	/* IE 9 */
+}
+
+.rotate-43 {
+	transform: rotate(43deg);
+	/* CSS3 */
+	-moz-transform: rotate(43deg);
+	/* Firefox */
+	-webkit-transform: rotate(43deg);
+	/* Webkit */
+	-o-transform: rotate(43deg);
+	/* Opera */
+	-ms-transform: rotate(43deg);
+	/* IE 9 */
+}
+
+.rotate-44 {
+	transform: rotate(44deg);
+	/* CSS3 */
+	-moz-transform: rotate(44deg);
+	/* Firefox */
+	-webkit-transform: rotate(44deg);
+	/* Webkit */
+	-o-transform: rotate(44deg);
+	/* Opera */
+	-ms-transform: rotate(44deg);
+	/* IE 9 */
+}
+
+.rotate-45 {
+	transform: rotate(45deg);
+	/* CSS3 */
+	-moz-transform: rotate(45deg);
+	/* Firefox */
+	-webkit-transform: rotate(45deg);
+	/* Webkit */
+	-o-transform: rotate(45deg);
+	/* Opera */
+	-ms-transform: rotate(45deg);
+	/* IE 9 */
+}
+
+.rotate-46 {
+	transform: rotate(46deg);
+	/* CSS3 */
+	-moz-transform: rotate(46deg);
+	/* Firefox */
+	-webkit-transform: rotate(46deg);
+	/* Webkit */
+	-o-transform: rotate(46deg);
+	/* Opera */
+	-ms-transform: rotate(46deg);
+	/* IE 9 */
+}
+
+.rotate-47 {
+	transform: rotate(47deg);
+	/* CSS3 */
+	-moz-transform: rotate(47deg);
+	/* Firefox */
+	-webkit-transform: rotate(47deg);
+	/* Webkit */
+	-o-transform: rotate(47deg);
+	/* Opera */
+	-ms-transform: rotate(47deg);
+	/* IE 9 */
+}
+
+.rotate-48 {
+	transform: rotate(48deg);
+	/* CSS3 */
+	-moz-transform: rotate(48deg);
+	/* Firefox */
+	-webkit-transform: rotate(48deg);
+	/* Webkit */
+	-o-transform: rotate(48deg);
+	/* Opera */
+	-ms-transform: rotate(48deg);
+	/* IE 9 */
+}
+
+.rotate-49 {
+	transform: rotate(49deg);
+	/* CSS3 */
+	-moz-transform: rotate(49deg);
+	/* Firefox */
+	-webkit-transform: rotate(49deg);
+	/* Webkit */
+	-o-transform: rotate(49deg);
+	/* Opera */
+	-ms-transform: rotate(49deg);
+	/* IE 9 */
+}
+
+.rotate-50 {
+	transform: rotate(50deg);
+	/* CSS3 */
+	-moz-transform: rotate(50deg);
+	/* Firefox */
+	-webkit-transform: rotate(50deg);
+	/* Webkit */
+	-o-transform: rotate(50deg);
+	/* Opera */
+	-ms-transform: rotate(50deg);
+	/* IE 9 */
+}
+
+.rotate-51 {
+	transform: rotate(51deg);
+	/* CSS3 */
+	-moz-transform: rotate(51deg);
+	/* Firefox */
+	-webkit-transform: rotate(51deg);
+	/* Webkit */
+	-o-transform: rotate(51deg);
+	/* Opera */
+	-ms-transform: rotate(51deg);
+	/* IE 9 */
+}
+
+.rotate-52 {
+	transform: rotate(52deg);
+	/* CSS3 */
+	-moz-transform: rotate(52deg);
+	/* Firefox */
+	-webkit-transform: rotate(52deg);
+	/* Webkit */
+	-o-transform: rotate(52deg);
+	/* Opera */
+	-ms-transform: rotate(52deg);
+	/* IE 9 */
+}
+
+.rotate-53 {
+	transform: rotate(53deg);
+	/* CSS3 */
+	-moz-transform: rotate(53deg);
+	/* Firefox */
+	-webkit-transform: rotate(53deg);
+	/* Webkit */
+	-o-transform: rotate(53deg);
+	/* Opera */
+	-ms-transform: rotate(53deg);
+	/* IE 9 */
+}
+
+.rotate-54 {
+	transform: rotate(54deg);
+	/* CSS3 */
+	-moz-transform: rotate(54deg);
+	/* Firefox */
+	-webkit-transform: rotate(54deg);
+	/* Webkit */
+	-o-transform: rotate(54deg);
+	/* Opera */
+	-ms-transform: rotate(54deg);
+	/* IE 9 */
+}
+
+.rotate-55 {
+	transform: rotate(55deg);
+	/* CSS3 */
+	-moz-transform: rotate(55deg);
+	/* Firefox */
+	-webkit-transform: rotate(55deg);
+	/* Webkit */
+	-o-transform: rotate(55deg);
+	/* Opera */
+	-ms-transform: rotate(55deg);
+	/* IE 9 */
+}
+
+.rotate-56 {
+	transform: rotate(56deg);
+	/* CSS3 */
+	-moz-transform: rotate(56deg);
+	/* Firefox */
+	-webkit-transform: rotate(56deg);
+	/* Webkit */
+	-o-transform: rotate(56deg);
+	/* Opera */
+	-ms-transform: rotate(56deg);
+	/* IE 9 */
+}
+
+.rotate-57 {
+	transform: rotate(57deg);
+	/* CSS3 */
+	-moz-transform: rotate(57deg);
+	/* Firefox */
+	-webkit-transform: rotate(57deg);
+	/* Webkit */
+	-o-transform: rotate(57deg);
+	/* Opera */
+	-ms-transform: rotate(57deg);
+	/* IE 9 */
+}
+
+.rotate-58 {
+	transform: rotate(58deg);
+	/* CSS3 */
+	-moz-transform: rotate(58deg);
+	/* Firefox */
+	-webkit-transform: rotate(58deg);
+	/* Webkit */
+	-o-transform: rotate(58deg);
+	/* Opera */
+	-ms-transform: rotate(58deg);
+	/* IE 9 */
+}
+
+.rotate-59 {
+	transform: rotate(59deg);
+	/* CSS3 */
+	-moz-transform: rotate(59deg);
+	/* Firefox */
+	-webkit-transform: rotate(59deg);
+	/* Webkit */
+	-o-transform: rotate(59deg);
+	/* Opera */
+	-ms-transform: rotate(59deg);
+	/* IE 9 */
+}
+
+.rotate-60 {
+	transform: rotate(60deg);
+	/* CSS3 */
+	-moz-transform: rotate(60deg);
+	/* Firefox */
+	-webkit-transform: rotate(60deg);
+	/* Webkit */
+	-o-transform: rotate(60deg);
+	/* Opera */
+	-ms-transform: rotate(60deg);
+	/* IE 9 */
+}
+
+.rotate-61 {
+	transform: rotate(61deg);
+	/* CSS3 */
+	-moz-transform: rotate(61deg);
+	/* Firefox */
+	-webkit-transform: rotate(61deg);
+	/* Webkit */
+	-o-transform: rotate(61deg);
+	/* Opera */
+	-ms-transform: rotate(61deg);
+	/* IE 9 */
+}
+
+.rotate-62 {
+	transform: rotate(62deg);
+	/* CSS3 */
+	-moz-transform: rotate(62deg);
+	/* Firefox */
+	-webkit-transform: rotate(62deg);
+	/* Webkit */
+	-o-transform: rotate(62deg);
+	/* Opera */
+	-ms-transform: rotate(62deg);
+	/* IE 9 */
+}
+
+.rotate-63 {
+	transform: rotate(63deg);
+	/* CSS3 */
+	-moz-transform: rotate(63deg);
+	/* Firefox */
+	-webkit-transform: rotate(63deg);
+	/* Webkit */
+	-o-transform: rotate(63deg);
+	/* Opera */
+	-ms-transform: rotate(63deg);
+	/* IE 9 */
+}
+
+.rotate-64 {
+	transform: rotate(64deg);
+	/* CSS3 */
+	-moz-transform: rotate(64deg);
+	/* Firefox */
+	-webkit-transform: rotate(64deg);
+	/* Webkit */
+	-o-transform: rotate(64deg);
+	/* Opera */
+	-ms-transform: rotate(64deg);
+	/* IE 9 */
+}
+
+.rotate-65 {
+	transform: rotate(65deg);
+	/* CSS3 */
+	-moz-transform: rotate(65deg);
+	/* Firefox */
+	-webkit-transform: rotate(65deg);
+	/* Webkit */
+	-o-transform: rotate(65deg);
+	/* Opera */
+	-ms-transform: rotate(65deg);
+	/* IE 9 */
+}
+
+.rotate-66 {
+	transform: rotate(66deg);
+	/* CSS3 */
+	-moz-transform: rotate(66deg);
+	/* Firefox */
+	-webkit-transform: rotate(66deg);
+	/* Webkit */
+	-o-transform: rotate(66deg);
+	/* Opera */
+	-ms-transform: rotate(66deg);
+	/* IE 9 */
+}
+
+.rotate-67 {
+	transform: rotate(67deg);
+	/* CSS3 */
+	-moz-transform: rotate(67deg);
+	/* Firefox */
+	-webkit-transform: rotate(67deg);
+	/* Webkit */
+	-o-transform: rotate(67deg);
+	/* Opera */
+	-ms-transform: rotate(67deg);
+	/* IE 9 */
+}
+
+.rotate-68 {
+	transform: rotate(68deg);
+	/* CSS3 */
+	-moz-transform: rotate(68deg);
+	/* Firefox */
+	-webkit-transform: rotate(68deg);
+	/* Webkit */
+	-o-transform: rotate(68deg);
+	/* Opera */
+	-ms-transform: rotate(68deg);
+	/* IE 9 */
+}
+
+.rotate-69 {
+	transform: rotate(69deg);
+	/* CSS3 */
+	-moz-transform: rotate(69deg);
+	/* Firefox */
+	-webkit-transform: rotate(69deg);
+	/* Webkit */
+	-o-transform: rotate(69deg);
+	/* Opera */
+	-ms-transform: rotate(69deg);
+	/* IE 9 */
+}
+
+.rotate-70 {
+	transform: rotate(70deg);
+	/* CSS3 */
+	-moz-transform: rotate(70deg);
+	/* Firefox */
+	-webkit-transform: rotate(70deg);
+	/* Webkit */
+	-o-transform: rotate(70deg);
+	/* Opera */
+	-ms-transform: rotate(70deg);
+	/* IE 9 */
+}
+
+.rotate-71 {
+	transform: rotate(71deg);
+	/* CSS3 */
+	-moz-transform: rotate(71deg);
+	/* Firefox */
+	-webkit-transform: rotate(71deg);
+	/* Webkit */
+	-o-transform: rotate(71deg);
+	/* Opera */
+	-ms-transform: rotate(71deg);
+	/* IE 9 */
+}
+
+.rotate-72 {
+	transform: rotate(72deg);
+	/* CSS3 */
+	-moz-transform: rotate(72deg);
+	/* Firefox */
+	-webkit-transform: rotate(72deg);
+	/* Webkit */
+	-o-transform: rotate(72deg);
+	/* Opera */
+	-ms-transform: rotate(72deg);
+	/* IE 9 */
+}
+
+.rotate-73 {
+	transform: rotate(73deg);
+	/* CSS3 */
+	-moz-transform: rotate(73deg);
+	/* Firefox */
+	-webkit-transform: rotate(73deg);
+	/* Webkit */
+	-o-transform: rotate(73deg);
+	/* Opera */
+	-ms-transform: rotate(73deg);
+	/* IE 9 */
+}
+
+.rotate-74 {
+	transform: rotate(74deg);
+	/* CSS3 */
+	-moz-transform: rotate(74deg);
+	/* Firefox */
+	-webkit-transform: rotate(74deg);
+	/* Webkit */
+	-o-transform: rotate(74deg);
+	/* Opera */
+	-ms-transform: rotate(74deg);
+	/* IE 9 */
+}
+
+.rotate-75 {
+	transform: rotate(75deg);
+	/* CSS3 */
+	-moz-transform: rotate(75deg);
+	/* Firefox */
+	-webkit-transform: rotate(75deg);
+	/* Webkit */
+	-o-transform: rotate(75deg);
+	/* Opera */
+	-ms-transform: rotate(75deg);
+	/* IE 9 */
+}
+
+.rotate-76 {
+	transform: rotate(76deg);
+	/* CSS3 */
+	-moz-transform: rotate(76deg);
+	/* Firefox */
+	-webkit-transform: rotate(76deg);
+	/* Webkit */
+	-o-transform: rotate(76deg);
+	/* Opera */
+	-ms-transform: rotate(76deg);
+	/* IE 9 */
+}
+
+.rotate-77 {
+	transform: rotate(77deg);
+	/* CSS3 */
+	-moz-transform: rotate(77deg);
+	/* Firefox */
+	-webkit-transform: rotate(77deg);
+	/* Webkit */
+	-o-transform: rotate(77deg);
+	/* Opera */
+	-ms-transform: rotate(77deg);
+	/* IE 9 */
+}
+
+.rotate-78 {
+	transform: rotate(78deg);
+	/* CSS3 */
+	-moz-transform: rotate(78deg);
+	/* Firefox */
+	-webkit-transform: rotate(78deg);
+	/* Webkit */
+	-o-transform: rotate(78deg);
+	/* Opera */
+	-ms-transform: rotate(78deg);
+	/* IE 9 */
+}
+
+.rotate-79 {
+	transform: rotate(79deg);
+	/* CSS3 */
+	-moz-transform: rotate(79deg);
+	/* Firefox */
+	-webkit-transform: rotate(79deg);
+	/* Webkit */
+	-o-transform: rotate(79deg);
+	/* Opera */
+	-ms-transform: rotate(79deg);
+	/* IE 9 */
+}
+
+.rotate-80 {
+	transform: rotate(80deg);
+	/* CSS3 */
+	-moz-transform: rotate(80deg);
+	/* Firefox */
+	-webkit-transform: rotate(80deg);
+	/* Webkit */
+	-o-transform: rotate(80deg);
+	/* Opera */
+	-ms-transform: rotate(80deg);
+	/* IE 9 */
+}
+
+.rotate-81 {
+	transform: rotate(81deg);
+	/* CSS3 */
+	-moz-transform: rotate(81deg);
+	/* Firefox */
+	-webkit-transform: rotate(81deg);
+	/* Webkit */
+	-o-transform: rotate(81deg);
+	/* Opera */
+	-ms-transform: rotate(81deg);
+	/* IE 9 */
+}
+
+.rotate-82 {
+	transform: rotate(82deg);
+	/* CSS3 */
+	-moz-transform: rotate(82deg);
+	/* Firefox */
+	-webkit-transform: rotate(82deg);
+	/* Webkit */
+	-o-transform: rotate(82deg);
+	/* Opera */
+	-ms-transform: rotate(82deg);
+	/* IE 9 */
+}
+
+.rotate-83 {
+	transform: rotate(83deg);
+	/* CSS3 */
+	-moz-transform: rotate(83deg);
+	/* Firefox */
+	-webkit-transform: rotate(83deg);
+	/* Webkit */
+	-o-transform: rotate(83deg);
+	/* Opera */
+	-ms-transform: rotate(83deg);
+	/* IE 9 */
+}
+
+.rotate-84 {
+	transform: rotate(84deg);
+	/* CSS3 */
+	-moz-transform: rotate(84deg);
+	/* Firefox */
+	-webkit-transform: rotate(84deg);
+	/* Webkit */
+	-o-transform: rotate(84deg);
+	/* Opera */
+	-ms-transform: rotate(84deg);
+	/* IE 9 */
+}
+
+.rotate-85 {
+	transform: rotate(85deg);
+	/* CSS3 */
+	-moz-transform: rotate(85deg);
+	/* Firefox */
+	-webkit-transform: rotate(85deg);
+	/* Webkit */
+	-o-transform: rotate(85deg);
+	/* Opera */
+	-ms-transform: rotate(85deg);
+	/* IE 9 */
+}
+
+.rotate-86 {
+	transform: rotate(86deg);
+	/* CSS3 */
+	-moz-transform: rotate(86deg);
+	/* Firefox */
+	-webkit-transform: rotate(86deg);
+	/* Webkit */
+	-o-transform: rotate(86deg);
+	/* Opera */
+	-ms-transform: rotate(86deg);
+	/* IE 9 */
+}
+
+.rotate-87 {
+	transform: rotate(87deg);
+	/* CSS3 */
+	-moz-transform: rotate(87deg);
+	/* Firefox */
+	-webkit-transform: rotate(87deg);
+	/* Webkit */
+	-o-transform: rotate(87deg);
+	/* Opera */
+	-ms-transform: rotate(87deg);
+	/* IE 9 */
+}
+
+.rotate-88 {
+	transform: rotate(88deg);
+	/* CSS3 */
+	-moz-transform: rotate(88deg);
+	/* Firefox */
+	-webkit-transform: rotate(88deg);
+	/* Webkit */
+	-o-transform: rotate(88deg);
+	/* Opera */
+	-ms-transform: rotate(88deg);
+	/* IE 9 */
+}
+
+.rotate-89 {
+	transform: rotate(89deg);
+	/* CSS3 */
+	-moz-transform: rotate(89deg);
+	/* Firefox */
+	-webkit-transform: rotate(89deg);
+	/* Webkit */
+	-o-transform: rotate(89deg);
+	/* Opera */
+	-ms-transform: rotate(89deg);
+	/* IE 9 */
+}
+
+.rotate-90 {
+	transform: rotate(90deg);
+	/* CSS3 */
+	-moz-transform: rotate(90deg);
+	/* Firefox */
+	-webkit-transform: rotate(90deg);
+	/* Webkit */
+	-o-transform: rotate(90deg);
+	/* Opera */
+	-ms-transform: rotate(90deg);
+	/* IE 9 */
+}
+
+.rotate-91 {
+	transform: rotate(91deg);
+	/* CSS3 */
+	-moz-transform: rotate(91deg);
+	/* Firefox */
+	-webkit-transform: rotate(91deg);
+	/* Webkit */
+	-o-transform: rotate(91deg);
+	/* Opera */
+	-ms-transform: rotate(91deg);
+	/* IE 9 */
+}
+
+.rotate-92 {
+	transform: rotate(92deg);
+	/* CSS3 */
+	-moz-transform: rotate(92deg);
+	/* Firefox */
+	-webkit-transform: rotate(92deg);
+	/* Webkit */
+	-o-transform: rotate(92deg);
+	/* Opera */
+	-ms-transform: rotate(92deg);
+	/* IE 9 */
+}
+
+.rotate-93 {
+	transform: rotate(93deg);
+	/* CSS3 */
+	-moz-transform: rotate(93deg);
+	/* Firefox */
+	-webkit-transform: rotate(93deg);
+	/* Webkit */
+	-o-transform: rotate(93deg);
+	/* Opera */
+	-ms-transform: rotate(93deg);
+	/* IE 9 */
+}
+
+.rotate-94 {
+	transform: rotate(94deg);
+	/* CSS3 */
+	-moz-transform: rotate(94deg);
+	/* Firefox */
+	-webkit-transform: rotate(94deg);
+	/* Webkit */
+	-o-transform: rotate(94deg);
+	/* Opera */
+	-ms-transform: rotate(94deg);
+	/* IE 9 */
+}
+
+.rotate-95 {
+	transform: rotate(95deg);
+	/* CSS3 */
+	-moz-transform: rotate(95deg);
+	/* Firefox */
+	-webkit-transform: rotate(95deg);
+	/* Webkit */
+	-o-transform: rotate(95deg);
+	/* Opera */
+	-ms-transform: rotate(95deg);
+	/* IE 9 */
+}
+
+.rotate-96 {
+	transform: rotate(96deg);
+	/* CSS3 */
+	-moz-transform: rotate(96deg);
+	/* Firefox */
+	-webkit-transform: rotate(96deg);
+	/* Webkit */
+	-o-transform: rotate(96deg);
+	/* Opera */
+	-ms-transform: rotate(96deg);
+	/* IE 9 */
+}
+
+.rotate-97 {
+	transform: rotate(97deg);
+	/* CSS3 */
+	-moz-transform: rotate(97deg);
+	/* Firefox */
+	-webkit-transform: rotate(97deg);
+	/* Webkit */
+	-o-transform: rotate(97deg);
+	/* Opera */
+	-ms-transform: rotate(97deg);
+	/* IE 9 */
+}
+
+.rotate-98 {
+	transform: rotate(98deg);
+	/* CSS3 */
+	-moz-transform: rotate(98deg);
+	/* Firefox */
+	-webkit-transform: rotate(98deg);
+	/* Webkit */
+	-o-transform: rotate(98deg);
+	/* Opera */
+	-ms-transform: rotate(98deg);
+	/* IE 9 */
+}
+
+.rotate-99 {
+	transform: rotate(99deg);
+	/* CSS3 */
+	-moz-transform: rotate(99deg);
+	/* Firefox */
+	-webkit-transform: rotate(99deg);
+	/* Webkit */
+	-o-transform: rotate(99deg);
+	/* Opera */
+	-ms-transform: rotate(99deg);
+	/* IE 9 */
+}
+
+.rotate-100 {
+	transform: rotate(100deg);
+	/* CSS3 */
+	-moz-transform: rotate(100deg);
+	/* Firefox */
+	-webkit-transform: rotate(100deg);
+	/* Webkit */
+	-o-transform: rotate(100deg);
+	/* Opera */
+	-ms-transform: rotate(100deg);
+	/* IE 9 */
+}
+
+.rotate-101 {
+	transform: rotate(101deg);
+	/* CSS3 */
+	-moz-transform: rotate(101deg);
+	/* Firefox */
+	-webkit-transform: rotate(101deg);
+	/* Webkit */
+	-o-transform: rotate(101deg);
+	/* Opera */
+	-ms-transform: rotate(101deg);
+	/* IE 9 */
+}
+
+.rotate-102 {
+	transform: rotate(102deg);
+	/* CSS3 */
+	-moz-transform: rotate(102deg);
+	/* Firefox */
+	-webkit-transform: rotate(102deg);
+	/* Webkit */
+	-o-transform: rotate(102deg);
+	/* Opera */
+	-ms-transform: rotate(102deg);
+	/* IE 9 */
+}
+
+.rotate-103 {
+	transform: rotate(103deg);
+	/* CSS3 */
+	-moz-transform: rotate(103deg);
+	/* Firefox */
+	-webkit-transform: rotate(103deg);
+	/* Webkit */
+	-o-transform: rotate(103deg);
+	/* Opera */
+	-ms-transform: rotate(103deg);
+	/* IE 9 */
+}
+
+.rotate-104 {
+	transform: rotate(104deg);
+	/* CSS3 */
+	-moz-transform: rotate(104deg);
+	/* Firefox */
+	-webkit-transform: rotate(104deg);
+	/* Webkit */
+	-o-transform: rotate(104deg);
+	/* Opera */
+	-ms-transform: rotate(104deg);
+	/* IE 9 */
+}
+
+.rotate-105 {
+	transform: rotate(105deg);
+	/* CSS3 */
+	-moz-transform: rotate(105deg);
+	/* Firefox */
+	-webkit-transform: rotate(105deg);
+	/* Webkit */
+	-o-transform: rotate(105deg);
+	/* Opera */
+	-ms-transform: rotate(105deg);
+	/* IE 9 */
+}
+
+.rotate-106 {
+	transform: rotate(106deg);
+	/* CSS3 */
+	-moz-transform: rotate(106deg);
+	/* Firefox */
+	-webkit-transform: rotate(106deg);
+	/* Webkit */
+	-o-transform: rotate(106deg);
+	/* Opera */
+	-ms-transform: rotate(106deg);
+	/* IE 9 */
+}
+
+.rotate-107 {
+	transform: rotate(107deg);
+	/* CSS3 */
+	-moz-transform: rotate(107deg);
+	/* Firefox */
+	-webkit-transform: rotate(107deg);
+	/* Webkit */
+	-o-transform: rotate(107deg);
+	/* Opera */
+	-ms-transform: rotate(107deg);
+	/* IE 9 */
+}
+
+.rotate-108 {
+	transform: rotate(108deg);
+	/* CSS3 */
+	-moz-transform: rotate(108deg);
+	/* Firefox */
+	-webkit-transform: rotate(108deg);
+	/* Webkit */
+	-o-transform: rotate(108deg);
+	/* Opera */
+	-ms-transform: rotate(108deg);
+	/* IE 9 */
+}
+
+.rotate-109 {
+	transform: rotate(109deg);
+	/* CSS3 */
+	-moz-transform: rotate(109deg);
+	/* Firefox */
+	-webkit-transform: rotate(109deg);
+	/* Webkit */
+	-o-transform: rotate(109deg);
+	/* Opera */
+	-ms-transform: rotate(109deg);
+	/* IE 9 */
+}
+
+.rotate-110 {
+	transform: rotate(110deg);
+	/* CSS3 */
+	-moz-transform: rotate(110deg);
+	/* Firefox */
+	-webkit-transform: rotate(110deg);
+	/* Webkit */
+	-o-transform: rotate(110deg);
+	/* Opera */
+	-ms-transform: rotate(110deg);
+	/* IE 9 */
+}
+
+.rotate-111 {
+	transform: rotate(111deg);
+	/* CSS3 */
+	-moz-transform: rotate(111deg);
+	/* Firefox */
+	-webkit-transform: rotate(111deg);
+	/* Webkit */
+	-o-transform: rotate(111deg);
+	/* Opera */
+	-ms-transform: rotate(111deg);
+	/* IE 9 */
+}
+
+.rotate-112 {
+	transform: rotate(112deg);
+	/* CSS3 */
+	-moz-transform: rotate(112deg);
+	/* Firefox */
+	-webkit-transform: rotate(112deg);
+	/* Webkit */
+	-o-transform: rotate(112deg);
+	/* Opera */
+	-ms-transform: rotate(112deg);
+	/* IE 9 */
+}
+
+.rotate-113 {
+	transform: rotate(113deg);
+	/* CSS3 */
+	-moz-transform: rotate(113deg);
+	/* Firefox */
+	-webkit-transform: rotate(113deg);
+	/* Webkit */
+	-o-transform: rotate(113deg);
+	/* Opera */
+	-ms-transform: rotate(113deg);
+	/* IE 9 */
+}
+
+.rotate-114 {
+	transform: rotate(114deg);
+	/* CSS3 */
+	-moz-transform: rotate(114deg);
+	/* Firefox */
+	-webkit-transform: rotate(114deg);
+	/* Webkit */
+	-o-transform: rotate(114deg);
+	/* Opera */
+	-ms-transform: rotate(114deg);
+	/* IE 9 */
+}
+
+.rotate-115 {
+	transform: rotate(115deg);
+	/* CSS3 */
+	-moz-transform: rotate(115deg);
+	/* Firefox */
+	-webkit-transform: rotate(115deg);
+	/* Webkit */
+	-o-transform: rotate(115deg);
+	/* Opera */
+	-ms-transform: rotate(115deg);
+	/* IE 9 */
+}
+
+.rotate-116 {
+	transform: rotate(116deg);
+	/* CSS3 */
+	-moz-transform: rotate(116deg);
+	/* Firefox */
+	-webkit-transform: rotate(116deg);
+	/* Webkit */
+	-o-transform: rotate(116deg);
+	/* Opera */
+	-ms-transform: rotate(116deg);
+	/* IE 9 */
+}
+
+.rotate-117 {
+	transform: rotate(117deg);
+	/* CSS3 */
+	-moz-transform: rotate(117deg);
+	/* Firefox */
+	-webkit-transform: rotate(117deg);
+	/* Webkit */
+	-o-transform: rotate(117deg);
+	/* Opera */
+	-ms-transform: rotate(117deg);
+	/* IE 9 */
+}
+
+.rotate-118 {
+	transform: rotate(118deg);
+	/* CSS3 */
+	-moz-transform: rotate(118deg);
+	/* Firefox */
+	-webkit-transform: rotate(118deg);
+	/* Webkit */
+	-o-transform: rotate(118deg);
+	/* Opera */
+	-ms-transform: rotate(118deg);
+	/* IE 9 */
+}
+
+.rotate-119 {
+	transform: rotate(119deg);
+	/* CSS3 */
+	-moz-transform: rotate(119deg);
+	/* Firefox */
+	-webkit-transform: rotate(119deg);
+	/* Webkit */
+	-o-transform: rotate(119deg);
+	/* Opera */
+	-ms-transform: rotate(119deg);
+	/* IE 9 */
+}
+
+.rotate-120 {
+	transform: rotate(120deg);
+	/* CSS3 */
+	-moz-transform: rotate(120deg);
+	/* Firefox */
+	-webkit-transform: rotate(120deg);
+	/* Webkit */
+	-o-transform: rotate(120deg);
+	/* Opera */
+	-ms-transform: rotate(120deg);
+	/* IE 9 */
+}
+
+.rotate-121 {
+	transform: rotate(121deg);
+	/* CSS3 */
+	-moz-transform: rotate(121deg);
+	/* Firefox */
+	-webkit-transform: rotate(121deg);
+	/* Webkit */
+	-o-transform: rotate(121deg);
+	/* Opera */
+	-ms-transform: rotate(121deg);
+	/* IE 9 */
+}
+
+.rotate-122 {
+	transform: rotate(122deg);
+	/* CSS3 */
+	-moz-transform: rotate(122deg);
+	/* Firefox */
+	-webkit-transform: rotate(122deg);
+	/* Webkit */
+	-o-transform: rotate(122deg);
+	/* Opera */
+	-ms-transform: rotate(122deg);
+	/* IE 9 */
+}
+
+.rotate-123 {
+	transform: rotate(123deg);
+	/* CSS3 */
+	-moz-transform: rotate(123deg);
+	/* Firefox */
+	-webkit-transform: rotate(123deg);
+	/* Webkit */
+	-o-transform: rotate(123deg);
+	/* Opera */
+	-ms-transform: rotate(123deg);
+	/* IE 9 */
+}
+
+.rotate-124 {
+	transform: rotate(124deg);
+	/* CSS3 */
+	-moz-transform: rotate(124deg);
+	/* Firefox */
+	-webkit-transform: rotate(124deg);
+	/* Webkit */
+	-o-transform: rotate(124deg);
+	/* Opera */
+	-ms-transform: rotate(124deg);
+	/* IE 9 */
+}
+
+.rotate-125 {
+	transform: rotate(125deg);
+	/* CSS3 */
+	-moz-transform: rotate(125deg);
+	/* Firefox */
+	-webkit-transform: rotate(125deg);
+	/* Webkit */
+	-o-transform: rotate(125deg);
+	/* Opera */
+	-ms-transform: rotate(125deg);
+	/* IE 9 */
+}
+
+.rotate-126 {
+	transform: rotate(126deg);
+	/* CSS3 */
+	-moz-transform: rotate(126deg);
+	/* Firefox */
+	-webkit-transform: rotate(126deg);
+	/* Webkit */
+	-o-transform: rotate(126deg);
+	/* Opera */
+	-ms-transform: rotate(126deg);
+	/* IE 9 */
+}
+
+.rotate-127 {
+	transform: rotate(127deg);
+	/* CSS3 */
+	-moz-transform: rotate(127deg);
+	/* Firefox */
+	-webkit-transform: rotate(127deg);
+	/* Webkit */
+	-o-transform: rotate(127deg);
+	/* Opera */
+	-ms-transform: rotate(127deg);
+	/* IE 9 */
+}
+
+.rotate-128 {
+	transform: rotate(128deg);
+	/* CSS3 */
+	-moz-transform: rotate(128deg);
+	/* Firefox */
+	-webkit-transform: rotate(128deg);
+	/* Webkit */
+	-o-transform: rotate(128deg);
+	/* Opera */
+	-ms-transform: rotate(128deg);
+	/* IE 9 */
+}
+
+.rotate-129 {
+	transform: rotate(129deg);
+	/* CSS3 */
+	-moz-transform: rotate(129deg);
+	/* Firefox */
+	-webkit-transform: rotate(129deg);
+	/* Webkit */
+	-o-transform: rotate(129deg);
+	/* Opera */
+	-ms-transform: rotate(129deg);
+	/* IE 9 */
+}
+
+.rotate-130 {
+	transform: rotate(130deg);
+	/* CSS3 */
+	-moz-transform: rotate(130deg);
+	/* Firefox */
+	-webkit-transform: rotate(130deg);
+	/* Webkit */
+	-o-transform: rotate(130deg);
+	/* Opera */
+	-ms-transform: rotate(130deg);
+	/* IE 9 */
+}
+
+.rotate-131 {
+	transform: rotate(131deg);
+	/* CSS3 */
+	-moz-transform: rotate(131deg);
+	/* Firefox */
+	-webkit-transform: rotate(131deg);
+	/* Webkit */
+	-o-transform: rotate(131deg);
+	/* Opera */
+	-ms-transform: rotate(131deg);
+	/* IE 9 */
+}
+
+.rotate-132 {
+	transform: rotate(132deg);
+	/* CSS3 */
+	-moz-transform: rotate(132deg);
+	/* Firefox */
+	-webkit-transform: rotate(132deg);
+	/* Webkit */
+	-o-transform: rotate(132deg);
+	/* Opera */
+	-ms-transform: rotate(132deg);
+	/* IE 9 */
+}
+
+.rotate-133 {
+	transform: rotate(133deg);
+	/* CSS3 */
+	-moz-transform: rotate(133deg);
+	/* Firefox */
+	-webkit-transform: rotate(133deg);
+	/* Webkit */
+	-o-transform: rotate(133deg);
+	/* Opera */
+	-ms-transform: rotate(133deg);
+	/* IE 9 */
+}
+
+.rotate-134 {
+	transform: rotate(134deg);
+	/* CSS3 */
+	-moz-transform: rotate(134deg);
+	/* Firefox */
+	-webkit-transform: rotate(134deg);
+	/* Webkit */
+	-o-transform: rotate(134deg);
+	/* Opera */
+	-ms-transform: rotate(134deg);
+	/* IE 9 */
+}
+
+.rotate-135 {
+	transform: rotate(135deg);
+	/* CSS3 */
+	-moz-transform: rotate(135deg);
+	/* Firefox */
+	-webkit-transform: rotate(135deg);
+	/* Webkit */
+	-o-transform: rotate(135deg);
+	/* Opera */
+	-ms-transform: rotate(135deg);
+	/* IE 9 */
+}
+
+.rotate-136 {
+	transform: rotate(136deg);
+	/* CSS3 */
+	-moz-transform: rotate(136deg);
+	/* Firefox */
+	-webkit-transform: rotate(136deg);
+	/* Webkit */
+	-o-transform: rotate(136deg);
+	/* Opera */
+	-ms-transform: rotate(136deg);
+	/* IE 9 */
+}
+
+.rotate-137 {
+	transform: rotate(137deg);
+	/* CSS3 */
+	-moz-transform: rotate(137deg);
+	/* Firefox */
+	-webkit-transform: rotate(137deg);
+	/* Webkit */
+	-o-transform: rotate(137deg);
+	/* Opera */
+	-ms-transform: rotate(137deg);
+	/* IE 9 */
+}
+
+.rotate-138 {
+	transform: rotate(138deg);
+	/* CSS3 */
+	-moz-transform: rotate(138deg);
+	/* Firefox */
+	-webkit-transform: rotate(138deg);
+	/* Webkit */
+	-o-transform: rotate(138deg);
+	/* Opera */
+	-ms-transform: rotate(138deg);
+	/* IE 9 */
+}
+
+.rotate-139 {
+	transform: rotate(139deg);
+	/* CSS3 */
+	-moz-transform: rotate(139deg);
+	/* Firefox */
+	-webkit-transform: rotate(139deg);
+	/* Webkit */
+	-o-transform: rotate(139deg);
+	/* Opera */
+	-ms-transform: rotate(139deg);
+	/* IE 9 */
+}
+
+.rotate-140 {
+	transform: rotate(140deg);
+	/* CSS3 */
+	-moz-transform: rotate(140deg);
+	/* Firefox */
+	-webkit-transform: rotate(140deg);
+	/* Webkit */
+	-o-transform: rotate(140deg);
+	/* Opera */
+	-ms-transform: rotate(140deg);
+	/* IE 9 */
+}
+
+.rotate-141 {
+	transform: rotate(141deg);
+	/* CSS3 */
+	-moz-transform: rotate(141deg);
+	/* Firefox */
+	-webkit-transform: rotate(141deg);
+	/* Webkit */
+	-o-transform: rotate(141deg);
+	/* Opera */
+	-ms-transform: rotate(141deg);
+	/* IE 9 */
+}
+
+.rotate-142 {
+	transform: rotate(142deg);
+	/* CSS3 */
+	-moz-transform: rotate(142deg);
+	/* Firefox */
+	-webkit-transform: rotate(142deg);
+	/* Webkit */
+	-o-transform: rotate(142deg);
+	/* Opera */
+	-ms-transform: rotate(142deg);
+	/* IE 9 */
+}
+
+.rotate-143 {
+	transform: rotate(143deg);
+	/* CSS3 */
+	-moz-transform: rotate(143deg);
+	/* Firefox */
+	-webkit-transform: rotate(143deg);
+	/* Webkit */
+	-o-transform: rotate(143deg);
+	/* Opera */
+	-ms-transform: rotate(143deg);
+	/* IE 9 */
+}
+
+.rotate-144 {
+	transform: rotate(144deg);
+	/* CSS3 */
+	-moz-transform: rotate(144deg);
+	/* Firefox */
+	-webkit-transform: rotate(144deg);
+	/* Webkit */
+	-o-transform: rotate(144deg);
+	/* Opera */
+	-ms-transform: rotate(144deg);
+	/* IE 9 */
+}
+
+.rotate-145 {
+	transform: rotate(145deg);
+	/* CSS3 */
+	-moz-transform: rotate(145deg);
+	/* Firefox */
+	-webkit-transform: rotate(145deg);
+	/* Webkit */
+	-o-transform: rotate(145deg);
+	/* Opera */
+	-ms-transform: rotate(145deg);
+	/* IE 9 */
+}
+
+.rotate-146 {
+	transform: rotate(146deg);
+	/* CSS3 */
+	-moz-transform: rotate(146deg);
+	/* Firefox */
+	-webkit-transform: rotate(146deg);
+	/* Webkit */
+	-o-transform: rotate(146deg);
+	/* Opera */
+	-ms-transform: rotate(146deg);
+	/* IE 9 */
+}
+
+.rotate-147 {
+	transform: rotate(147deg);
+	/* CSS3 */
+	-moz-transform: rotate(147deg);
+	/* Firefox */
+	-webkit-transform: rotate(147deg);
+	/* Webkit */
+	-o-transform: rotate(147deg);
+	/* Opera */
+	-ms-transform: rotate(147deg);
+	/* IE 9 */
+}
+
+.rotate-148 {
+	transform: rotate(148deg);
+	/* CSS3 */
+	-moz-transform: rotate(148deg);
+	/* Firefox */
+	-webkit-transform: rotate(148deg);
+	/* Webkit */
+	-o-transform: rotate(148deg);
+	/* Opera */
+	-ms-transform: rotate(148deg);
+	/* IE 9 */
+}
+
+.rotate-149 {
+	transform: rotate(149deg);
+	/* CSS3 */
+	-moz-transform: rotate(149deg);
+	/* Firefox */
+	-webkit-transform: rotate(149deg);
+	/* Webkit */
+	-o-transform: rotate(149deg);
+	/* Opera */
+	-ms-transform: rotate(149deg);
+	/* IE 9 */
+}
+
+.rotate-150 {
+	transform: rotate(150deg);
+	/* CSS3 */
+	-moz-transform: rotate(150deg);
+	/* Firefox */
+	-webkit-transform: rotate(150deg);
+	/* Webkit */
+	-o-transform: rotate(150deg);
+	/* Opera */
+	-ms-transform: rotate(150deg);
+	/* IE 9 */
+}
+
+.rotate-151 {
+	transform: rotate(151deg);
+	/* CSS3 */
+	-moz-transform: rotate(151deg);
+	/* Firefox */
+	-webkit-transform: rotate(151deg);
+	/* Webkit */
+	-o-transform: rotate(151deg);
+	/* Opera */
+	-ms-transform: rotate(151deg);
+	/* IE 9 */
+}
+
+.rotate-152 {
+	transform: rotate(152deg);
+	/* CSS3 */
+	-moz-transform: rotate(152deg);
+	/* Firefox */
+	-webkit-transform: rotate(152deg);
+	/* Webkit */
+	-o-transform: rotate(152deg);
+	/* Opera */
+	-ms-transform: rotate(152deg);
+	/* IE 9 */
+}
+
+.rotate-153 {
+	transform: rotate(153deg);
+	/* CSS3 */
+	-moz-transform: rotate(153deg);
+	/* Firefox */
+	-webkit-transform: rotate(153deg);
+	/* Webkit */
+	-o-transform: rotate(153deg);
+	/* Opera */
+	-ms-transform: rotate(153deg);
+	/* IE 9 */
+}
+
+.rotate-154 {
+	transform: rotate(154deg);
+	/* CSS3 */
+	-moz-transform: rotate(154deg);
+	/* Firefox */
+	-webkit-transform: rotate(154deg);
+	/* Webkit */
+	-o-transform: rotate(154deg);
+	/* Opera */
+	-ms-transform: rotate(154deg);
+	/* IE 9 */
+}
+
+.rotate-155 {
+	transform: rotate(155deg);
+	/* CSS3 */
+	-moz-transform: rotate(155deg);
+	/* Firefox */
+	-webkit-transform: rotate(155deg);
+	/* Webkit */
+	-o-transform: rotate(155deg);
+	/* Opera */
+	-ms-transform: rotate(155deg);
+	/* IE 9 */
+}
+
+.rotate-156 {
+	transform: rotate(156deg);
+	/* CSS3 */
+	-moz-transform: rotate(156deg);
+	/* Firefox */
+	-webkit-transform: rotate(156deg);
+	/* Webkit */
+	-o-transform: rotate(156deg);
+	/* Opera */
+	-ms-transform: rotate(156deg);
+	/* IE 9 */
+}
+
+.rotate-157 {
+	transform: rotate(157deg);
+	/* CSS3 */
+	-moz-transform: rotate(157deg);
+	/* Firefox */
+	-webkit-transform: rotate(157deg);
+	/* Webkit */
+	-o-transform: rotate(157deg);
+	/* Opera */
+	-ms-transform: rotate(157deg);
+	/* IE 9 */
+}
+
+.rotate-158 {
+	transform: rotate(158deg);
+	/* CSS3 */
+	-moz-transform: rotate(158deg);
+	/* Firefox */
+	-webkit-transform: rotate(158deg);
+	/* Webkit */
+	-o-transform: rotate(158deg);
+	/* Opera */
+	-ms-transform: rotate(158deg);
+	/* IE 9 */
+}
+
+.rotate-159 {
+	transform: rotate(159deg);
+	/* CSS3 */
+	-moz-transform: rotate(159deg);
+	/* Firefox */
+	-webkit-transform: rotate(159deg);
+	/* Webkit */
+	-o-transform: rotate(159deg);
+	/* Opera */
+	-ms-transform: rotate(159deg);
+	/* IE 9 */
+}
+
+.rotate-160 {
+	transform: rotate(160deg);
+	/* CSS3 */
+	-moz-transform: rotate(160deg);
+	/* Firefox */
+	-webkit-transform: rotate(160deg);
+	/* Webkit */
+	-o-transform: rotate(160deg);
+	/* Opera */
+	-ms-transform: rotate(160deg);
+	/* IE 9 */
+}
+
+.rotate-161 {
+	transform: rotate(161deg);
+	/* CSS3 */
+	-moz-transform: rotate(161deg);
+	/* Firefox */
+	-webkit-transform: rotate(161deg);
+	/* Webkit */
+	-o-transform: rotate(161deg);
+	/* Opera */
+	-ms-transform: rotate(161deg);
+	/* IE 9 */
+}
+
+.rotate-162 {
+	transform: rotate(162deg);
+	/* CSS3 */
+	-moz-transform: rotate(162deg);
+	/* Firefox */
+	-webkit-transform: rotate(162deg);
+	/* Webkit */
+	-o-transform: rotate(162deg);
+	/* Opera */
+	-ms-transform: rotate(162deg);
+	/* IE 9 */
+}
+
+.rotate-163 {
+	transform: rotate(163deg);
+	/* CSS3 */
+	-moz-transform: rotate(163deg);
+	/* Firefox */
+	-webkit-transform: rotate(163deg);
+	/* Webkit */
+	-o-transform: rotate(163deg);
+	/* Opera */
+	-ms-transform: rotate(163deg);
+	/* IE 9 */
+}
+
+.rotate-164 {
+	transform: rotate(164deg);
+	/* CSS3 */
+	-moz-transform: rotate(164deg);
+	/* Firefox */
+	-webkit-transform: rotate(164deg);
+	/* Webkit */
+	-o-transform: rotate(164deg);
+	/* Opera */
+	-ms-transform: rotate(164deg);
+	/* IE 9 */
+}
+
+.rotate-165 {
+	transform: rotate(165deg);
+	/* CSS3 */
+	-moz-transform: rotate(165deg);
+	/* Firefox */
+	-webkit-transform: rotate(165deg);
+	/* Webkit */
+	-o-transform: rotate(165deg);
+	/* Opera */
+	-ms-transform: rotate(165deg);
+	/* IE 9 */
+}
+
+.rotate-166 {
+	transform: rotate(166deg);
+	/* CSS3 */
+	-moz-transform: rotate(166deg);
+	/* Firefox */
+	-webkit-transform: rotate(166deg);
+	/* Webkit */
+	-o-transform: rotate(166deg);
+	/* Opera */
+	-ms-transform: rotate(166deg);
+	/* IE 9 */
+}
+
+.rotate-167 {
+	transform: rotate(167deg);
+	/* CSS3 */
+	-moz-transform: rotate(167deg);
+	/* Firefox */
+	-webkit-transform: rotate(167deg);
+	/* Webkit */
+	-o-transform: rotate(167deg);
+	/* Opera */
+	-ms-transform: rotate(167deg);
+	/* IE 9 */
+}
+
+.rotate-168 {
+	transform: rotate(168deg);
+	/* CSS3 */
+	-moz-transform: rotate(168deg);
+	/* Firefox */
+	-webkit-transform: rotate(168deg);
+	/* Webkit */
+	-o-transform: rotate(168deg);
+	/* Opera */
+	-ms-transform: rotate(168deg);
+	/* IE 9 */
+}
+
+.rotate-169 {
+	transform: rotate(169deg);
+	/* CSS3 */
+	-moz-transform: rotate(169deg);
+	/* Firefox */
+	-webkit-transform: rotate(169deg);
+	/* Webkit */
+	-o-transform: rotate(169deg);
+	/* Opera */
+	-ms-transform: rotate(169deg);
+	/* IE 9 */
+}
+
+.rotate-170 {
+	transform: rotate(170deg);
+	/* CSS3 */
+	-moz-transform: rotate(170deg);
+	/* Firefox */
+	-webkit-transform: rotate(170deg);
+	/* Webkit */
+	-o-transform: rotate(170deg);
+	/* Opera */
+	-ms-transform: rotate(170deg);
+	/* IE 9 */
+}
+
+.rotate-171 {
+	transform: rotate(171deg);
+	/* CSS3 */
+	-moz-transform: rotate(171deg);
+	/* Firefox */
+	-webkit-transform: rotate(171deg);
+	/* Webkit */
+	-o-transform: rotate(171deg);
+	/* Opera */
+	-ms-transform: rotate(171deg);
+	/* IE 9 */
+}
+
+.rotate-172 {
+	transform: rotate(172deg);
+	/* CSS3 */
+	-moz-transform: rotate(172deg);
+	/* Firefox */
+	-webkit-transform: rotate(172deg);
+	/* Webkit */
+	-o-transform: rotate(172deg);
+	/* Opera */
+	-ms-transform: rotate(172deg);
+	/* IE 9 */
+}
+
+.rotate-173 {
+	transform: rotate(173deg);
+	/* CSS3 */
+	-moz-transform: rotate(173deg);
+	/* Firefox */
+	-webkit-transform: rotate(173deg);
+	/* Webkit */
+	-o-transform: rotate(173deg);
+	/* Opera */
+	-ms-transform: rotate(173deg);
+	/* IE 9 */
+}
+
+.rotate-174 {
+	transform: rotate(174deg);
+	/* CSS3 */
+	-moz-transform: rotate(174deg);
+	/* Firefox */
+	-webkit-transform: rotate(174deg);
+	/* Webkit */
+	-o-transform: rotate(174deg);
+	/* Opera */
+	-ms-transform: rotate(174deg);
+	/* IE 9 */
+}
+
+.rotate-175 {
+	transform: rotate(175deg);
+	/* CSS3 */
+	-moz-transform: rotate(175deg);
+	/* Firefox */
+	-webkit-transform: rotate(175deg);
+	/* Webkit */
+	-o-transform: rotate(175deg);
+	/* Opera */
+	-ms-transform: rotate(175deg);
+	/* IE 9 */
+}
+
+.rotate-176 {
+	transform: rotate(176deg);
+	/* CSS3 */
+	-moz-transform: rotate(176deg);
+	/* Firefox */
+	-webkit-transform: rotate(176deg);
+	/* Webkit */
+	-o-transform: rotate(176deg);
+	/* Opera */
+	-ms-transform: rotate(176deg);
+	/* IE 9 */
+}
+
+.rotate-177 {
+	transform: rotate(177deg);
+	/* CSS3 */
+	-moz-transform: rotate(177deg);
+	/* Firefox */
+	-webkit-transform: rotate(177deg);
+	/* Webkit */
+	-o-transform: rotate(177deg);
+	/* Opera */
+	-ms-transform: rotate(177deg);
+	/* IE 9 */
+}
+
+.rotate-178 {
+	transform: rotate(178deg);
+	/* CSS3 */
+	-moz-transform: rotate(178deg);
+	/* Firefox */
+	-webkit-transform: rotate(178deg);
+	/* Webkit */
+	-o-transform: rotate(178deg);
+	/* Opera */
+	-ms-transform: rotate(178deg);
+	/* IE 9 */
+}
+
+.rotate-179 {
+	transform: rotate(179deg);
+	/* CSS3 */
+	-moz-transform: rotate(179deg);
+	/* Firefox */
+	-webkit-transform: rotate(179deg);
+	/* Webkit */
+	-o-transform: rotate(179deg);
+	/* Opera */
+	-ms-transform: rotate(179deg);
+	/* IE 9 */
+}
+
+.rotate-180 {
+	transform: rotate(180deg);
+	/* CSS3 */
+	-moz-transform: rotate(180deg);
+	/* Firefox */
+	-webkit-transform: rotate(180deg);
+	/* Webkit */
+	-o-transform: rotate(180deg);
+	/* Opera */
+	-ms-transform: rotate(180deg);
+	/* IE 9 */
+}
+
+.rotate-181 {
+	transform: rotate(181deg);
+	/* CSS3 */
+	-moz-transform: rotate(181deg);
+	/* Firefox */
+	-webkit-transform: rotate(181deg);
+	/* Webkit */
+	-o-transform: rotate(181deg);
+	/* Opera */
+	-ms-transform: rotate(181deg);
+	/* IE 9 */
+}
+
+.rotate-182 {
+	transform: rotate(182deg);
+	/* CSS3 */
+	-moz-transform: rotate(182deg);
+	/* Firefox */
+	-webkit-transform: rotate(182deg);
+	/* Webkit */
+	-o-transform: rotate(182deg);
+	/* Opera */
+	-ms-transform: rotate(182deg);
+	/* IE 9 */
+}
+
+.rotate-183 {
+	transform: rotate(183deg);
+	/* CSS3 */
+	-moz-transform: rotate(183deg);
+	/* Firefox */
+	-webkit-transform: rotate(183deg);
+	/* Webkit */
+	-o-transform: rotate(183deg);
+	/* Opera */
+	-ms-transform: rotate(183deg);
+	/* IE 9 */
+}
+
+.rotate-184 {
+	transform: rotate(184deg);
+	/* CSS3 */
+	-moz-transform: rotate(184deg);
+	/* Firefox */
+	-webkit-transform: rotate(184deg);
+	/* Webkit */
+	-o-transform: rotate(184deg);
+	/* Opera */
+	-ms-transform: rotate(184deg);
+	/* IE 9 */
+}
+
+.rotate-185 {
+	transform: rotate(185deg);
+	/* CSS3 */
+	-moz-transform: rotate(185deg);
+	/* Firefox */
+	-webkit-transform: rotate(185deg);
+	/* Webkit */
+	-o-transform: rotate(185deg);
+	/* Opera */
+	-ms-transform: rotate(185deg);
+	/* IE 9 */
+}
+
+.rotate-186 {
+	transform: rotate(186deg);
+	/* CSS3 */
+	-moz-transform: rotate(186deg);
+	/* Firefox */
+	-webkit-transform: rotate(186deg);
+	/* Webkit */
+	-o-transform: rotate(186deg);
+	/* Opera */
+	-ms-transform: rotate(186deg);
+	/* IE 9 */
+}
+
+.rotate-187 {
+	transform: rotate(187deg);
+	/* CSS3 */
+	-moz-transform: rotate(187deg);
+	/* Firefox */
+	-webkit-transform: rotate(187deg);
+	/* Webkit */
+	-o-transform: rotate(187deg);
+	/* Opera */
+	-ms-transform: rotate(187deg);
+	/* IE 9 */
+}
+
+.rotate-188 {
+	transform: rotate(188deg);
+	/* CSS3 */
+	-moz-transform: rotate(188deg);
+	/* Firefox */
+	-webkit-transform: rotate(188deg);
+	/* Webkit */
+	-o-transform: rotate(188deg);
+	/* Opera */
+	-ms-transform: rotate(188deg);
+	/* IE 9 */
+}
+
+.rotate-189 {
+	transform: rotate(189deg);
+	/* CSS3 */
+	-moz-transform: rotate(189deg);
+	/* Firefox */
+	-webkit-transform: rotate(189deg);
+	/* Webkit */
+	-o-transform: rotate(189deg);
+	/* Opera */
+	-ms-transform: rotate(189deg);
+	/* IE 9 */
+}
+
+.rotate-190 {
+	transform: rotate(190deg);
+	/* CSS3 */
+	-moz-transform: rotate(190deg);
+	/* Firefox */
+	-webkit-transform: rotate(190deg);
+	/* Webkit */
+	-o-transform: rotate(190deg);
+	/* Opera */
+	-ms-transform: rotate(190deg);
+	/* IE 9 */
+}
+
+.rotate-191 {
+	transform: rotate(191deg);
+	/* CSS3 */
+	-moz-transform: rotate(191deg);
+	/* Firefox */
+	-webkit-transform: rotate(191deg);
+	/* Webkit */
+	-o-transform: rotate(191deg);
+	/* Opera */
+	-ms-transform: rotate(191deg);
+	/* IE 9 */
+}
+
+.rotate-192 {
+	transform: rotate(192deg);
+	/* CSS3 */
+	-moz-transform: rotate(192deg);
+	/* Firefox */
+	-webkit-transform: rotate(192deg);
+	/* Webkit */
+	-o-transform: rotate(192deg);
+	/* Opera */
+	-ms-transform: rotate(192deg);
+	/* IE 9 */
+}
+
+.rotate-193 {
+	transform: rotate(193deg);
+	/* CSS3 */
+	-moz-transform: rotate(193deg);
+	/* Firefox */
+	-webkit-transform: rotate(193deg);
+	/* Webkit */
+	-o-transform: rotate(193deg);
+	/* Opera */
+	-ms-transform: rotate(193deg);
+	/* IE 9 */
+}
+
+.rotate-194 {
+	transform: rotate(194deg);
+	/* CSS3 */
+	-moz-transform: rotate(194deg);
+	/* Firefox */
+	-webkit-transform: rotate(194deg);
+	/* Webkit */
+	-o-transform: rotate(194deg);
+	/* Opera */
+	-ms-transform: rotate(194deg);
+	/* IE 9 */
+}
+
+.rotate-195 {
+	transform: rotate(195deg);
+	/* CSS3 */
+	-moz-transform: rotate(195deg);
+	/* Firefox */
+	-webkit-transform: rotate(195deg);
+	/* Webkit */
+	-o-transform: rotate(195deg);
+	/* Opera */
+	-ms-transform: rotate(195deg);
+	/* IE 9 */
+}
+
+.rotate-196 {
+	transform: rotate(196deg);
+	/* CSS3 */
+	-moz-transform: rotate(196deg);
+	/* Firefox */
+	-webkit-transform: rotate(196deg);
+	/* Webkit */
+	-o-transform: rotate(196deg);
+	/* Opera */
+	-ms-transform: rotate(196deg);
+	/* IE 9 */
+}
+
+.rotate-197 {
+	transform: rotate(197deg);
+	/* CSS3 */
+	-moz-transform: rotate(197deg);
+	/* Firefox */
+	-webkit-transform: rotate(197deg);
+	/* Webkit */
+	-o-transform: rotate(197deg);
+	/* Opera */
+	-ms-transform: rotate(197deg);
+	/* IE 9 */
+}
+
+.rotate-198 {
+	transform: rotate(198deg);
+	/* CSS3 */
+	-moz-transform: rotate(198deg);
+	/* Firefox */
+	-webkit-transform: rotate(198deg);
+	/* Webkit */
+	-o-transform: rotate(198deg);
+	/* Opera */
+	-ms-transform: rotate(198deg);
+	/* IE 9 */
+}
+
+.rotate-199 {
+	transform: rotate(199deg);
+	/* CSS3 */
+	-moz-transform: rotate(199deg);
+	/* Firefox */
+	-webkit-transform: rotate(199deg);
+	/* Webkit */
+	-o-transform: rotate(199deg);
+	/* Opera */
+	-ms-transform: rotate(199deg);
+	/* IE 9 */
+}
+
+.rotate-200 {
+	transform: rotate(200deg);
+	/* CSS3 */
+	-moz-transform: rotate(200deg);
+	/* Firefox */
+	-webkit-transform: rotate(200deg);
+	/* Webkit */
+	-o-transform: rotate(200deg);
+	/* Opera */
+	-ms-transform: rotate(200deg);
+	/* IE 9 */
+}
+
+.rotate-201 {
+	transform: rotate(201deg);
+	/* CSS3 */
+	-moz-transform: rotate(201deg);
+	/* Firefox */
+	-webkit-transform: rotate(201deg);
+	/* Webkit */
+	-o-transform: rotate(201deg);
+	/* Opera */
+	-ms-transform: rotate(201deg);
+	/* IE 9 */
+}
+
+.rotate-202 {
+	transform: rotate(202deg);
+	/* CSS3 */
+	-moz-transform: rotate(202deg);
+	/* Firefox */
+	-webkit-transform: rotate(202deg);
+	/* Webkit */
+	-o-transform: rotate(202deg);
+	/* Opera */
+	-ms-transform: rotate(202deg);
+	/* IE 9 */
+}
+
+.rotate-203 {
+	transform: rotate(203deg);
+	/* CSS3 */
+	-moz-transform: rotate(203deg);
+	/* Firefox */
+	-webkit-transform: rotate(203deg);
+	/* Webkit */
+	-o-transform: rotate(203deg);
+	/* Opera */
+	-ms-transform: rotate(203deg);
+	/* IE 9 */
+}
+
+.rotate-204 {
+	transform: rotate(204deg);
+	/* CSS3 */
+	-moz-transform: rotate(204deg);
+	/* Firefox */
+	-webkit-transform: rotate(204deg);
+	/* Webkit */
+	-o-transform: rotate(204deg);
+	/* Opera */
+	-ms-transform: rotate(204deg);
+	/* IE 9 */
+}
+
+.rotate-205 {
+	transform: rotate(205deg);
+	/* CSS3 */
+	-moz-transform: rotate(205deg);
+	/* Firefox */
+	-webkit-transform: rotate(205deg);
+	/* Webkit */
+	-o-transform: rotate(205deg);
+	/* Opera */
+	-ms-transform: rotate(205deg);
+	/* IE 9 */
+}
+
+.rotate-206 {
+	transform: rotate(206deg);
+	/* CSS3 */
+	-moz-transform: rotate(206deg);
+	/* Firefox */
+	-webkit-transform: rotate(206deg);
+	/* Webkit */
+	-o-transform: rotate(206deg);
+	/* Opera */
+	-ms-transform: rotate(206deg);
+	/* IE 9 */
+}
+
+.rotate-207 {
+	transform: rotate(207deg);
+	/* CSS3 */
+	-moz-transform: rotate(207deg);
+	/* Firefox */
+	-webkit-transform: rotate(207deg);
+	/* Webkit */
+	-o-transform: rotate(207deg);
+	/* Opera */
+	-ms-transform: rotate(207deg);
+	/* IE 9 */
+}
+
+.rotate-208 {
+	transform: rotate(208deg);
+	/* CSS3 */
+	-moz-transform: rotate(208deg);
+	/* Firefox */
+	-webkit-transform: rotate(208deg);
+	/* Webkit */
+	-o-transform: rotate(208deg);
+	/* Opera */
+	-ms-transform: rotate(208deg);
+	/* IE 9 */
+}
+
+.rotate-209 {
+	transform: rotate(209deg);
+	/* CSS3 */
+	-moz-transform: rotate(209deg);
+	/* Firefox */
+	-webkit-transform: rotate(209deg);
+	/* Webkit */
+	-o-transform: rotate(209deg);
+	/* Opera */
+	-ms-transform: rotate(209deg);
+	/* IE 9 */
+}
+
+.rotate-210 {
+	transform: rotate(210deg);
+	/* CSS3 */
+	-moz-transform: rotate(210deg);
+	/* Firefox */
+	-webkit-transform: rotate(210deg);
+	/* Webkit */
+	-o-transform: rotate(210deg);
+	/* Opera */
+	-ms-transform: rotate(210deg);
+	/* IE 9 */
+}
+
+.rotate-211 {
+	transform: rotate(211deg);
+	/* CSS3 */
+	-moz-transform: rotate(211deg);
+	/* Firefox */
+	-webkit-transform: rotate(211deg);
+	/* Webkit */
+	-o-transform: rotate(211deg);
+	/* Opera */
+	-ms-transform: rotate(211deg);
+	/* IE 9 */
+}
+
+.rotate-212 {
+	transform: rotate(212deg);
+	/* CSS3 */
+	-moz-transform: rotate(212deg);
+	/* Firefox */
+	-webkit-transform: rotate(212deg);
+	/* Webkit */
+	-o-transform: rotate(212deg);
+	/* Opera */
+	-ms-transform: rotate(212deg);
+	/* IE 9 */
+}
+
+.rotate-213 {
+	transform: rotate(213deg);
+	/* CSS3 */
+	-moz-transform: rotate(213deg);
+	/* Firefox */
+	-webkit-transform: rotate(213deg);
+	/* Webkit */
+	-o-transform: rotate(213deg);
+	/* Opera */
+	-ms-transform: rotate(213deg);
+	/* IE 9 */
+}
+
+.rotate-214 {
+	transform: rotate(214deg);
+	/* CSS3 */
+	-moz-transform: rotate(214deg);
+	/* Firefox */
+	-webkit-transform: rotate(214deg);
+	/* Webkit */
+	-o-transform: rotate(214deg);
+	/* Opera */
+	-ms-transform: rotate(214deg);
+	/* IE 9 */
+}
+
+.rotate-215 {
+	transform: rotate(215deg);
+	/* CSS3 */
+	-moz-transform: rotate(215deg);
+	/* Firefox */
+	-webkit-transform: rotate(215deg);
+	/* Webkit */
+	-o-transform: rotate(215deg);
+	/* Opera */
+	-ms-transform: rotate(215deg);
+	/* IE 9 */
+}
+
+.rotate-216 {
+	transform: rotate(216deg);
+	/* CSS3 */
+	-moz-transform: rotate(216deg);
+	/* Firefox */
+	-webkit-transform: rotate(216deg);
+	/* Webkit */
+	-o-transform: rotate(216deg);
+	/* Opera */
+	-ms-transform: rotate(216deg);
+	/* IE 9 */
+}
+
+.rotate-217 {
+	transform: rotate(217deg);
+	/* CSS3 */
+	-moz-transform: rotate(217deg);
+	/* Firefox */
+	-webkit-transform: rotate(217deg);
+	/* Webkit */
+	-o-transform: rotate(217deg);
+	/* Opera */
+	-ms-transform: rotate(217deg);
+	/* IE 9 */
+}
+
+.rotate-218 {
+	transform: rotate(218deg);
+	/* CSS3 */
+	-moz-transform: rotate(218deg);
+	/* Firefox */
+	-webkit-transform: rotate(218deg);
+	/* Webkit */
+	-o-transform: rotate(218deg);
+	/* Opera */
+	-ms-transform: rotate(218deg);
+	/* IE 9 */
+}
+
+.rotate-219 {
+	transform: rotate(219deg);
+	/* CSS3 */
+	-moz-transform: rotate(219deg);
+	/* Firefox */
+	-webkit-transform: rotate(219deg);
+	/* Webkit */
+	-o-transform: rotate(219deg);
+	/* Opera */
+	-ms-transform: rotate(219deg);
+	/* IE 9 */
+}
+
+.rotate-220 {
+	transform: rotate(220deg);
+	/* CSS3 */
+	-moz-transform: rotate(220deg);
+	/* Firefox */
+	-webkit-transform: rotate(220deg);
+	/* Webkit */
+	-o-transform: rotate(220deg);
+	/* Opera */
+	-ms-transform: rotate(220deg);
+	/* IE 9 */
+}
+
+.rotate-221 {
+	transform: rotate(221deg);
+	/* CSS3 */
+	-moz-transform: rotate(221deg);
+	/* Firefox */
+	-webkit-transform: rotate(221deg);
+	/* Webkit */
+	-o-transform: rotate(221deg);
+	/* Opera */
+	-ms-transform: rotate(221deg);
+	/* IE 9 */
+}
+
+.rotate-222 {
+	transform: rotate(222deg);
+	/* CSS3 */
+	-moz-transform: rotate(222deg);
+	/* Firefox */
+	-webkit-transform: rotate(222deg);
+	/* Webkit */
+	-o-transform: rotate(222deg);
+	/* Opera */
+	-ms-transform: rotate(222deg);
+	/* IE 9 */
+}
+
+.rotate-223 {
+	transform: rotate(223deg);
+	/* CSS3 */
+	-moz-transform: rotate(223deg);
+	/* Firefox */
+	-webkit-transform: rotate(223deg);
+	/* Webkit */
+	-o-transform: rotate(223deg);
+	/* Opera */
+	-ms-transform: rotate(223deg);
+	/* IE 9 */
+}
+
+.rotate-224 {
+	transform: rotate(224deg);
+	/* CSS3 */
+	-moz-transform: rotate(224deg);
+	/* Firefox */
+	-webkit-transform: rotate(224deg);
+	/* Webkit */
+	-o-transform: rotate(224deg);
+	/* Opera */
+	-ms-transform: rotate(224deg);
+	/* IE 9 */
+}
+
+.rotate-225 {
+	transform: rotate(225deg);
+	/* CSS3 */
+	-moz-transform: rotate(225deg);
+	/* Firefox */
+	-webkit-transform: rotate(225deg);
+	/* Webkit */
+	-o-transform: rotate(225deg);
+	/* Opera */
+	-ms-transform: rotate(225deg);
+	/* IE 9 */
+}
+
+.rotate-226 {
+	transform: rotate(226deg);
+	/* CSS3 */
+	-moz-transform: rotate(226deg);
+	/* Firefox */
+	-webkit-transform: rotate(226deg);
+	/* Webkit */
+	-o-transform: rotate(226deg);
+	/* Opera */
+	-ms-transform: rotate(226deg);
+	/* IE 9 */
+}
+
+.rotate-227 {
+	transform: rotate(227deg);
+	/* CSS3 */
+	-moz-transform: rotate(227deg);
+	/* Firefox */
+	-webkit-transform: rotate(227deg);
+	/* Webkit */
+	-o-transform: rotate(227deg);
+	/* Opera */
+	-ms-transform: rotate(227deg);
+	/* IE 9 */
+}
+
+.rotate-228 {
+	transform: rotate(228deg);
+	/* CSS3 */
+	-moz-transform: rotate(228deg);
+	/* Firefox */
+	-webkit-transform: rotate(228deg);
+	/* Webkit */
+	-o-transform: rotate(228deg);
+	/* Opera */
+	-ms-transform: rotate(228deg);
+	/* IE 9 */
+}
+
+.rotate-229 {
+	transform: rotate(229deg);
+	/* CSS3 */
+	-moz-transform: rotate(229deg);
+	/* Firefox */
+	-webkit-transform: rotate(229deg);
+	/* Webkit */
+	-o-transform: rotate(229deg);
+	/* Opera */
+	-ms-transform: rotate(229deg);
+	/* IE 9 */
+}
+
+.rotate-230 {
+	transform: rotate(230deg);
+	/* CSS3 */
+	-moz-transform: rotate(230deg);
+	/* Firefox */
+	-webkit-transform: rotate(230deg);
+	/* Webkit */
+	-o-transform: rotate(230deg);
+	/* Opera */
+	-ms-transform: rotate(230deg);
+	/* IE 9 */
+}
+
+.rotate-231 {
+	transform: rotate(231deg);
+	/* CSS3 */
+	-moz-transform: rotate(231deg);
+	/* Firefox */
+	-webkit-transform: rotate(231deg);
+	/* Webkit */
+	-o-transform: rotate(231deg);
+	/* Opera */
+	-ms-transform: rotate(231deg);
+	/* IE 9 */
+}
+
+.rotate-232 {
+	transform: rotate(232deg);
+	/* CSS3 */
+	-moz-transform: rotate(232deg);
+	/* Firefox */
+	-webkit-transform: rotate(232deg);
+	/* Webkit */
+	-o-transform: rotate(232deg);
+	/* Opera */
+	-ms-transform: rotate(232deg);
+	/* IE 9 */
+}
+
+.rotate-233 {
+	transform: rotate(233deg);
+	/* CSS3 */
+	-moz-transform: rotate(233deg);
+	/* Firefox */
+	-webkit-transform: rotate(233deg);
+	/* Webkit */
+	-o-transform: rotate(233deg);
+	/* Opera */
+	-ms-transform: rotate(233deg);
+	/* IE 9 */
+}
+
+.rotate-234 {
+	transform: rotate(234deg);
+	/* CSS3 */
+	-moz-transform: rotate(234deg);
+	/* Firefox */
+	-webkit-transform: rotate(234deg);
+	/* Webkit */
+	-o-transform: rotate(234deg);
+	/* Opera */
+	-ms-transform: rotate(234deg);
+	/* IE 9 */
+}
+
+.rotate-235 {
+	transform: rotate(235deg);
+	/* CSS3 */
+	-moz-transform: rotate(235deg);
+	/* Firefox */
+	-webkit-transform: rotate(235deg);
+	/* Webkit */
+	-o-transform: rotate(235deg);
+	/* Opera */
+	-ms-transform: rotate(235deg);
+	/* IE 9 */
+}
+
+.rotate-236 {
+	transform: rotate(236deg);
+	/* CSS3 */
+	-moz-transform: rotate(236deg);
+	/* Firefox */
+	-webkit-transform: rotate(236deg);
+	/* Webkit */
+	-o-transform: rotate(236deg);
+	/* Opera */
+	-ms-transform: rotate(236deg);
+	/* IE 9 */
+}
+
+.rotate-237 {
+	transform: rotate(237deg);
+	/* CSS3 */
+	-moz-transform: rotate(237deg);
+	/* Firefox */
+	-webkit-transform: rotate(237deg);
+	/* Webkit */
+	-o-transform: rotate(237deg);
+	/* Opera */
+	-ms-transform: rotate(237deg);
+	/* IE 9 */
+}
+
+.rotate-238 {
+	transform: rotate(238deg);
+	/* CSS3 */
+	-moz-transform: rotate(238deg);
+	/* Firefox */
+	-webkit-transform: rotate(238deg);
+	/* Webkit */
+	-o-transform: rotate(238deg);
+	/* Opera */
+	-ms-transform: rotate(238deg);
+	/* IE 9 */
+}
+
+.rotate-239 {
+	transform: rotate(239deg);
+	/* CSS3 */
+	-moz-transform: rotate(239deg);
+	/* Firefox */
+	-webkit-transform: rotate(239deg);
+	/* Webkit */
+	-o-transform: rotate(239deg);
+	/* Opera */
+	-ms-transform: rotate(239deg);
+	/* IE 9 */
+}
+
+.rotate-240 {
+	transform: rotate(240deg);
+	/* CSS3 */
+	-moz-transform: rotate(240deg);
+	/* Firefox */
+	-webkit-transform: rotate(240deg);
+	/* Webkit */
+	-o-transform: rotate(240deg);
+	/* Opera */
+	-ms-transform: rotate(240deg);
+	/* IE 9 */
+}
+
+.rotate-241 {
+	transform: rotate(241deg);
+	/* CSS3 */
+	-moz-transform: rotate(241deg);
+	/* Firefox */
+	-webkit-transform: rotate(241deg);
+	/* Webkit */
+	-o-transform: rotate(241deg);
+	/* Opera */
+	-ms-transform: rotate(241deg);
+	/* IE 9 */
+}
+
+.rotate-242 {
+	transform: rotate(242deg);
+	/* CSS3 */
+	-moz-transform: rotate(242deg);
+	/* Firefox */
+	-webkit-transform: rotate(242deg);
+	/* Webkit */
+	-o-transform: rotate(242deg);
+	/* Opera */
+	-ms-transform: rotate(242deg);
+	/* IE 9 */
+}
+
+.rotate-243 {
+	transform: rotate(243deg);
+	/* CSS3 */
+	-moz-transform: rotate(243deg);
+	/* Firefox */
+	-webkit-transform: rotate(243deg);
+	/* Webkit */
+	-o-transform: rotate(243deg);
+	/* Opera */
+	-ms-transform: rotate(243deg);
+	/* IE 9 */
+}
+
+.rotate-244 {
+	transform: rotate(244deg);
+	/* CSS3 */
+	-moz-transform: rotate(244deg);
+	/* Firefox */
+	-webkit-transform: rotate(244deg);
+	/* Webkit */
+	-o-transform: rotate(244deg);
+	/* Opera */
+	-ms-transform: rotate(244deg);
+	/* IE 9 */
+}
+
+.rotate-245 {
+	transform: rotate(245deg);
+	/* CSS3 */
+	-moz-transform: rotate(245deg);
+	/* Firefox */
+	-webkit-transform: rotate(245deg);
+	/* Webkit */
+	-o-transform: rotate(245deg);
+	/* Opera */
+	-ms-transform: rotate(245deg);
+	/* IE 9 */
+}
+
+.rotate-246 {
+	transform: rotate(246deg);
+	/* CSS3 */
+	-moz-transform: rotate(246deg);
+	/* Firefox */
+	-webkit-transform: rotate(246deg);
+	/* Webkit */
+	-o-transform: rotate(246deg);
+	/* Opera */
+	-ms-transform: rotate(246deg);
+	/* IE 9 */
+}
+
+.rotate-247 {
+	transform: rotate(247deg);
+	/* CSS3 */
+	-moz-transform: rotate(247deg);
+	/* Firefox */
+	-webkit-transform: rotate(247deg);
+	/* Webkit */
+	-o-transform: rotate(247deg);
+	/* Opera */
+	-ms-transform: rotate(247deg);
+	/* IE 9 */
+}
+
+.rotate-248 {
+	transform: rotate(248deg);
+	/* CSS3 */
+	-moz-transform: rotate(248deg);
+	/* Firefox */
+	-webkit-transform: rotate(248deg);
+	/* Webkit */
+	-o-transform: rotate(248deg);
+	/* Opera */
+	-ms-transform: rotate(248deg);
+	/* IE 9 */
+}
+
+.rotate-249 {
+	transform: rotate(249deg);
+	/* CSS3 */
+	-moz-transform: rotate(249deg);
+	/* Firefox */
+	-webkit-transform: rotate(249deg);
+	/* Webkit */
+	-o-transform: rotate(249deg);
+	/* Opera */
+	-ms-transform: rotate(249deg);
+	/* IE 9 */
+}
+
+.rotate-250 {
+	transform: rotate(250deg);
+	/* CSS3 */
+	-moz-transform: rotate(250deg);
+	/* Firefox */
+	-webkit-transform: rotate(250deg);
+	/* Webkit */
+	-o-transform: rotate(250deg);
+	/* Opera */
+	-ms-transform: rotate(250deg);
+	/* IE 9 */
+}
+
+.rotate-251 {
+	transform: rotate(251deg);
+	/* CSS3 */
+	-moz-transform: rotate(251deg);
+	/* Firefox */
+	-webkit-transform: rotate(251deg);
+	/* Webkit */
+	-o-transform: rotate(251deg);
+	/* Opera */
+	-ms-transform: rotate(251deg);
+	/* IE 9 */
+}
+
+.rotate-252 {
+	transform: rotate(252deg);
+	/* CSS3 */
+	-moz-transform: rotate(252deg);
+	/* Firefox */
+	-webkit-transform: rotate(252deg);
+	/* Webkit */
+	-o-transform: rotate(252deg);
+	/* Opera */
+	-ms-transform: rotate(252deg);
+	/* IE 9 */
+}
+
+.rotate-253 {
+	transform: rotate(253deg);
+	/* CSS3 */
+	-moz-transform: rotate(253deg);
+	/* Firefox */
+	-webkit-transform: rotate(253deg);
+	/* Webkit */
+	-o-transform: rotate(253deg);
+	/* Opera */
+	-ms-transform: rotate(253deg);
+	/* IE 9 */
+}
+
+.rotate-254 {
+	transform: rotate(254deg);
+	/* CSS3 */
+	-moz-transform: rotate(254deg);
+	/* Firefox */
+	-webkit-transform: rotate(254deg);
+	/* Webkit */
+	-o-transform: rotate(254deg);
+	/* Opera */
+	-ms-transform: rotate(254deg);
+	/* IE 9 */
+}
+
+.rotate-255 {
+	transform: rotate(255deg);
+	/* CSS3 */
+	-moz-transform: rotate(255deg);
+	/* Firefox */
+	-webkit-transform: rotate(255deg);
+	/* Webkit */
+	-o-transform: rotate(255deg);
+	/* Opera */
+	-ms-transform: rotate(255deg);
+	/* IE 9 */
+}
+
+.rotate-256 {
+	transform: rotate(256deg);
+	/* CSS3 */
+	-moz-transform: rotate(256deg);
+	/* Firefox */
+	-webkit-transform: rotate(256deg);
+	/* Webkit */
+	-o-transform: rotate(256deg);
+	/* Opera */
+	-ms-transform: rotate(256deg);
+	/* IE 9 */
+}
+
+.rotate-257 {
+	transform: rotate(257deg);
+	/* CSS3 */
+	-moz-transform: rotate(257deg);
+	/* Firefox */
+	-webkit-transform: rotate(257deg);
+	/* Webkit */
+	-o-transform: rotate(257deg);
+	/* Opera */
+	-ms-transform: rotate(257deg);
+	/* IE 9 */
+}
+
+.rotate-258 {
+	transform: rotate(258deg);
+	/* CSS3 */
+	-moz-transform: rotate(258deg);
+	/* Firefox */
+	-webkit-transform: rotate(258deg);
+	/* Webkit */
+	-o-transform: rotate(258deg);
+	/* Opera */
+	-ms-transform: rotate(258deg);
+	/* IE 9 */
+}
+
+.rotate-259 {
+	transform: rotate(259deg);
+	/* CSS3 */
+	-moz-transform: rotate(259deg);
+	/* Firefox */
+	-webkit-transform: rotate(259deg);
+	/* Webkit */
+	-o-transform: rotate(259deg);
+	/* Opera */
+	-ms-transform: rotate(259deg);
+	/* IE 9 */
+}
+
+.rotate-260 {
+	transform: rotate(260deg);
+	/* CSS3 */
+	-moz-transform: rotate(260deg);
+	/* Firefox */
+	-webkit-transform: rotate(260deg);
+	/* Webkit */
+	-o-transform: rotate(260deg);
+	/* Opera */
+	-ms-transform: rotate(260deg);
+	/* IE 9 */
+}
+
+.rotate-261 {
+	transform: rotate(261deg);
+	/* CSS3 */
+	-moz-transform: rotate(261deg);
+	/* Firefox */
+	-webkit-transform: rotate(261deg);
+	/* Webkit */
+	-o-transform: rotate(261deg);
+	/* Opera */
+	-ms-transform: rotate(261deg);
+	/* IE 9 */
+}
+
+.rotate-262 {
+	transform: rotate(262deg);
+	/* CSS3 */
+	-moz-transform: rotate(262deg);
+	/* Firefox */
+	-webkit-transform: rotate(262deg);
+	/* Webkit */
+	-o-transform: rotate(262deg);
+	/* Opera */
+	-ms-transform: rotate(262deg);
+	/* IE 9 */
+}
+
+.rotate-263 {
+	transform: rotate(263deg);
+	/* CSS3 */
+	-moz-transform: rotate(263deg);
+	/* Firefox */
+	-webkit-transform: rotate(263deg);
+	/* Webkit */
+	-o-transform: rotate(263deg);
+	/* Opera */
+	-ms-transform: rotate(263deg);
+	/* IE 9 */
+}
+
+.rotate-264 {
+	transform: rotate(264deg);
+	/* CSS3 */
+	-moz-transform: rotate(264deg);
+	/* Firefox */
+	-webkit-transform: rotate(264deg);
+	/* Webkit */
+	-o-transform: rotate(264deg);
+	/* Opera */
+	-ms-transform: rotate(264deg);
+	/* IE 9 */
+}
+
+.rotate-265 {
+	transform: rotate(265deg);
+	/* CSS3 */
+	-moz-transform: rotate(265deg);
+	/* Firefox */
+	-webkit-transform: rotate(265deg);
+	/* Webkit */
+	-o-transform: rotate(265deg);
+	/* Opera */
+	-ms-transform: rotate(265deg);
+	/* IE 9 */
+}
+
+.rotate-266 {
+	transform: rotate(266deg);
+	/* CSS3 */
+	-moz-transform: rotate(266deg);
+	/* Firefox */
+	-webkit-transform: rotate(266deg);
+	/* Webkit */
+	-o-transform: rotate(266deg);
+	/* Opera */
+	-ms-transform: rotate(266deg);
+	/* IE 9 */
+}
+
+.rotate-267 {
+	transform: rotate(267deg);
+	/* CSS3 */
+	-moz-transform: rotate(267deg);
+	/* Firefox */
+	-webkit-transform: rotate(267deg);
+	/* Webkit */
+	-o-transform: rotate(267deg);
+	/* Opera */
+	-ms-transform: rotate(267deg);
+	/* IE 9 */
+}
+
+.rotate-268 {
+	transform: rotate(268deg);
+	/* CSS3 */
+	-moz-transform: rotate(268deg);
+	/* Firefox */
+	-webkit-transform: rotate(268deg);
+	/* Webkit */
+	-o-transform: rotate(268deg);
+	/* Opera */
+	-ms-transform: rotate(268deg);
+	/* IE 9 */
+}
+
+.rotate-269 {
+	transform: rotate(269deg);
+	/* CSS3 */
+	-moz-transform: rotate(269deg);
+	/* Firefox */
+	-webkit-transform: rotate(269deg);
+	/* Webkit */
+	-o-transform: rotate(269deg);
+	/* Opera */
+	-ms-transform: rotate(269deg);
+	/* IE 9 */
+}
+
+.rotate-270 {
+	transform: rotate(270deg);
+	/* CSS3 */
+	-moz-transform: rotate(270deg);
+	/* Firefox */
+	-webkit-transform: rotate(270deg);
+	/* Webkit */
+	-o-transform: rotate(270deg);
+	/* Opera */
+	-ms-transform: rotate(270deg);
+	/* IE 9 */
+}
+
+.rotate-271 {
+	transform: rotate(271deg);
+	/* CSS3 */
+	-moz-transform: rotate(271deg);
+	/* Firefox */
+	-webkit-transform: rotate(271deg);
+	/* Webkit */
+	-o-transform: rotate(271deg);
+	/* Opera */
+	-ms-transform: rotate(271deg);
+	/* IE 9 */
+}
+
+.rotate-272 {
+	transform: rotate(272deg);
+	/* CSS3 */
+	-moz-transform: rotate(272deg);
+	/* Firefox */
+	-webkit-transform: rotate(272deg);
+	/* Webkit */
+	-o-transform: rotate(272deg);
+	/* Opera */
+	-ms-transform: rotate(272deg);
+	/* IE 9 */
+}
+
+.rotate-273 {
+	transform: rotate(273deg);
+	/* CSS3 */
+	-moz-transform: rotate(273deg);
+	/* Firefox */
+	-webkit-transform: rotate(273deg);
+	/* Webkit */
+	-o-transform: rotate(273deg);
+	/* Opera */
+	-ms-transform: rotate(273deg);
+	/* IE 9 */
+}
+
+.rotate-274 {
+	transform: rotate(274deg);
+	/* CSS3 */
+	-moz-transform: rotate(274deg);
+	/* Firefox */
+	-webkit-transform: rotate(274deg);
+	/* Webkit */
+	-o-transform: rotate(274deg);
+	/* Opera */
+	-ms-transform: rotate(274deg);
+	/* IE 9 */
+}
+
+.rotate-275 {
+	transform: rotate(275deg);
+	/* CSS3 */
+	-moz-transform: rotate(275deg);
+	/* Firefox */
+	-webkit-transform: rotate(275deg);
+	/* Webkit */
+	-o-transform: rotate(275deg);
+	/* Opera */
+	-ms-transform: rotate(275deg);
+	/* IE 9 */
+}
+
+.rotate-276 {
+	transform: rotate(276deg);
+	/* CSS3 */
+	-moz-transform: rotate(276deg);
+	/* Firefox */
+	-webkit-transform: rotate(276deg);
+	/* Webkit */
+	-o-transform: rotate(276deg);
+	/* Opera */
+	-ms-transform: rotate(276deg);
+	/* IE 9 */
+}
+
+.rotate-277 {
+	transform: rotate(277deg);
+	/* CSS3 */
+	-moz-transform: rotate(277deg);
+	/* Firefox */
+	-webkit-transform: rotate(277deg);
+	/* Webkit */
+	-o-transform: rotate(277deg);
+	/* Opera */
+	-ms-transform: rotate(277deg);
+	/* IE 9 */
+}
+
+.rotate-278 {
+	transform: rotate(278deg);
+	/* CSS3 */
+	-moz-transform: rotate(278deg);
+	/* Firefox */
+	-webkit-transform: rotate(278deg);
+	/* Webkit */
+	-o-transform: rotate(278deg);
+	/* Opera */
+	-ms-transform: rotate(278deg);
+	/* IE 9 */
+}
+
+.rotate-279 {
+	transform: rotate(279deg);
+	/* CSS3 */
+	-moz-transform: rotate(279deg);
+	/* Firefox */
+	-webkit-transform: rotate(279deg);
+	/* Webkit */
+	-o-transform: rotate(279deg);
+	/* Opera */
+	-ms-transform: rotate(279deg);
+	/* IE 9 */
+}
+
+.rotate-280 {
+	transform: rotate(280deg);
+	/* CSS3 */
+	-moz-transform: rotate(280deg);
+	/* Firefox */
+	-webkit-transform: rotate(280deg);
+	/* Webkit */
+	-o-transform: rotate(280deg);
+	/* Opera */
+	-ms-transform: rotate(280deg);
+	/* IE 9 */
+}
+
+.rotate-281 {
+	transform: rotate(281deg);
+	/* CSS3 */
+	-moz-transform: rotate(281deg);
+	/* Firefox */
+	-webkit-transform: rotate(281deg);
+	/* Webkit */
+	-o-transform: rotate(281deg);
+	/* Opera */
+	-ms-transform: rotate(281deg);
+	/* IE 9 */
+}
+
+.rotate-282 {
+	transform: rotate(282deg);
+	/* CSS3 */
+	-moz-transform: rotate(282deg);
+	/* Firefox */
+	-webkit-transform: rotate(282deg);
+	/* Webkit */
+	-o-transform: rotate(282deg);
+	/* Opera */
+	-ms-transform: rotate(282deg);
+	/* IE 9 */
+}
+
+.rotate-283 {
+	transform: rotate(283deg);
+	/* CSS3 */
+	-moz-transform: rotate(283deg);
+	/* Firefox */
+	-webkit-transform: rotate(283deg);
+	/* Webkit */
+	-o-transform: rotate(283deg);
+	/* Opera */
+	-ms-transform: rotate(283deg);
+	/* IE 9 */
+}
+
+.rotate-284 {
+	transform: rotate(284deg);
+	/* CSS3 */
+	-moz-transform: rotate(284deg);
+	/* Firefox */
+	-webkit-transform: rotate(284deg);
+	/* Webkit */
+	-o-transform: rotate(284deg);
+	/* Opera */
+	-ms-transform: rotate(284deg);
+	/* IE 9 */
+}
+
+.rotate-285 {
+	transform: rotate(285deg);
+	/* CSS3 */
+	-moz-transform: rotate(285deg);
+	/* Firefox */
+	-webkit-transform: rotate(285deg);
+	/* Webkit */
+	-o-transform: rotate(285deg);
+	/* Opera */
+	-ms-transform: rotate(285deg);
+	/* IE 9 */
+}
+
+.rotate-286 {
+	transform: rotate(286deg);
+	/* CSS3 */
+	-moz-transform: rotate(286deg);
+	/* Firefox */
+	-webkit-transform: rotate(286deg);
+	/* Webkit */
+	-o-transform: rotate(286deg);
+	/* Opera */
+	-ms-transform: rotate(286deg);
+	/* IE 9 */
+}
+
+.rotate-287 {
+	transform: rotate(287deg);
+	/* CSS3 */
+	-moz-transform: rotate(287deg);
+	/* Firefox */
+	-webkit-transform: rotate(287deg);
+	/* Webkit */
+	-o-transform: rotate(287deg);
+	/* Opera */
+	-ms-transform: rotate(287deg);
+	/* IE 9 */
+}
+
+.rotate-288 {
+	transform: rotate(288deg);
+	/* CSS3 */
+	-moz-transform: rotate(288deg);
+	/* Firefox */
+	-webkit-transform: rotate(288deg);
+	/* Webkit */
+	-o-transform: rotate(288deg);
+	/* Opera */
+	-ms-transform: rotate(288deg);
+	/* IE 9 */
+}
+
+.rotate-289 {
+	transform: rotate(289deg);
+	/* CSS3 */
+	-moz-transform: rotate(289deg);
+	/* Firefox */
+	-webkit-transform: rotate(289deg);
+	/* Webkit */
+	-o-transform: rotate(289deg);
+	/* Opera */
+	-ms-transform: rotate(289deg);
+	/* IE 9 */
+}
+
+.rotate-290 {
+	transform: rotate(290deg);
+	/* CSS3 */
+	-moz-transform: rotate(290deg);
+	/* Firefox */
+	-webkit-transform: rotate(290deg);
+	/* Webkit */
+	-o-transform: rotate(290deg);
+	/* Opera */
+	-ms-transform: rotate(290deg);
+	/* IE 9 */
+}
+
+.rotate-291 {
+	transform: rotate(291deg);
+	/* CSS3 */
+	-moz-transform: rotate(291deg);
+	/* Firefox */
+	-webkit-transform: rotate(291deg);
+	/* Webkit */
+	-o-transform: rotate(291deg);
+	/* Opera */
+	-ms-transform: rotate(291deg);
+	/* IE 9 */
+}
+
+.rotate-292 {
+	transform: rotate(292deg);
+	/* CSS3 */
+	-moz-transform: rotate(292deg);
+	/* Firefox */
+	-webkit-transform: rotate(292deg);
+	/* Webkit */
+	-o-transform: rotate(292deg);
+	/* Opera */
+	-ms-transform: rotate(292deg);
+	/* IE 9 */
+}
+
+.rotate-293 {
+	transform: rotate(293deg);
+	/* CSS3 */
+	-moz-transform: rotate(293deg);
+	/* Firefox */
+	-webkit-transform: rotate(293deg);
+	/* Webkit */
+	-o-transform: rotate(293deg);
+	/* Opera */
+	-ms-transform: rotate(293deg);
+	/* IE 9 */
+}
+
+.rotate-294 {
+	transform: rotate(294deg);
+	/* CSS3 */
+	-moz-transform: rotate(294deg);
+	/* Firefox */
+	-webkit-transform: rotate(294deg);
+	/* Webkit */
+	-o-transform: rotate(294deg);
+	/* Opera */
+	-ms-transform: rotate(294deg);
+	/* IE 9 */
+}
+
+.rotate-295 {
+	transform: rotate(295deg);
+	/* CSS3 */
+	-moz-transform: rotate(295deg);
+	/* Firefox */
+	-webkit-transform: rotate(295deg);
+	/* Webkit */
+	-o-transform: rotate(295deg);
+	/* Opera */
+	-ms-transform: rotate(295deg);
+	/* IE 9 */
+}
+
+.rotate-296 {
+	transform: rotate(296deg);
+	/* CSS3 */
+	-moz-transform: rotate(296deg);
+	/* Firefox */
+	-webkit-transform: rotate(296deg);
+	/* Webkit */
+	-o-transform: rotate(296deg);
+	/* Opera */
+	-ms-transform: rotate(296deg);
+	/* IE 9 */
+}
+
+.rotate-297 {
+	transform: rotate(297deg);
+	/* CSS3 */
+	-moz-transform: rotate(297deg);
+	/* Firefox */
+	-webkit-transform: rotate(297deg);
+	/* Webkit */
+	-o-transform: rotate(297deg);
+	/* Opera */
+	-ms-transform: rotate(297deg);
+	/* IE 9 */
+}
+
+.rotate-298 {
+	transform: rotate(298deg);
+	/* CSS3 */
+	-moz-transform: rotate(298deg);
+	/* Firefox */
+	-webkit-transform: rotate(298deg);
+	/* Webkit */
+	-o-transform: rotate(298deg);
+	/* Opera */
+	-ms-transform: rotate(298deg);
+	/* IE 9 */
+}
+
+.rotate-299 {
+	transform: rotate(299deg);
+	/* CSS3 */
+	-moz-transform: rotate(299deg);
+	/* Firefox */
+	-webkit-transform: rotate(299deg);
+	/* Webkit */
+	-o-transform: rotate(299deg);
+	/* Opera */
+	-ms-transform: rotate(299deg);
+	/* IE 9 */
+}
+
+.rotate-300 {
+	transform: rotate(300deg);
+	/* CSS3 */
+	-moz-transform: rotate(300deg);
+	/* Firefox */
+	-webkit-transform: rotate(300deg);
+	/* Webkit */
+	-o-transform: rotate(300deg);
+	/* Opera */
+	-ms-transform: rotate(300deg);
+	/* IE 9 */
+}
+
+.rotate-301 {
+	transform: rotate(301deg);
+	/* CSS3 */
+	-moz-transform: rotate(301deg);
+	/* Firefox */
+	-webkit-transform: rotate(301deg);
+	/* Webkit */
+	-o-transform: rotate(301deg);
+	/* Opera */
+	-ms-transform: rotate(301deg);
+	/* IE 9 */
+}
+
+.rotate-302 {
+	transform: rotate(302deg);
+	/* CSS3 */
+	-moz-transform: rotate(302deg);
+	/* Firefox */
+	-webkit-transform: rotate(302deg);
+	/* Webkit */
+	-o-transform: rotate(302deg);
+	/* Opera */
+	-ms-transform: rotate(302deg);
+	/* IE 9 */
+}
+
+.rotate-303 {
+	transform: rotate(303deg);
+	/* CSS3 */
+	-moz-transform: rotate(303deg);
+	/* Firefox */
+	-webkit-transform: rotate(303deg);
+	/* Webkit */
+	-o-transform: rotate(303deg);
+	/* Opera */
+	-ms-transform: rotate(303deg);
+	/* IE 9 */
+}
+
+.rotate-304 {
+	transform: rotate(304deg);
+	/* CSS3 */
+	-moz-transform: rotate(304deg);
+	/* Firefox */
+	-webkit-transform: rotate(304deg);
+	/* Webkit */
+	-o-transform: rotate(304deg);
+	/* Opera */
+	-ms-transform: rotate(304deg);
+	/* IE 9 */
+}
+
+.rotate-305 {
+	transform: rotate(305deg);
+	/* CSS3 */
+	-moz-transform: rotate(305deg);
+	/* Firefox */
+	-webkit-transform: rotate(305deg);
+	/* Webkit */
+	-o-transform: rotate(305deg);
+	/* Opera */
+	-ms-transform: rotate(305deg);
+	/* IE 9 */
+}
+
+.rotate-306 {
+	transform: rotate(306deg);
+	/* CSS3 */
+	-moz-transform: rotate(306deg);
+	/* Firefox */
+	-webkit-transform: rotate(306deg);
+	/* Webkit */
+	-o-transform: rotate(306deg);
+	/* Opera */
+	-ms-transform: rotate(306deg);
+	/* IE 9 */
+}
+
+.rotate-307 {
+	transform: rotate(307deg);
+	/* CSS3 */
+	-moz-transform: rotate(307deg);
+	/* Firefox */
+	-webkit-transform: rotate(307deg);
+	/* Webkit */
+	-o-transform: rotate(307deg);
+	/* Opera */
+	-ms-transform: rotate(307deg);
+	/* IE 9 */
+}
+
+.rotate-308 {
+	transform: rotate(308deg);
+	/* CSS3 */
+	-moz-transform: rotate(308deg);
+	/* Firefox */
+	-webkit-transform: rotate(308deg);
+	/* Webkit */
+	-o-transform: rotate(308deg);
+	/* Opera */
+	-ms-transform: rotate(308deg);
+	/* IE 9 */
+}
+
+.rotate-309 {
+	transform: rotate(309deg);
+	/* CSS3 */
+	-moz-transform: rotate(309deg);
+	/* Firefox */
+	-webkit-transform: rotate(309deg);
+	/* Webkit */
+	-o-transform: rotate(309deg);
+	/* Opera */
+	-ms-transform: rotate(309deg);
+	/* IE 9 */
+}
+
+.rotate-310 {
+	transform: rotate(310deg);
+	/* CSS3 */
+	-moz-transform: rotate(310deg);
+	/* Firefox */
+	-webkit-transform: rotate(310deg);
+	/* Webkit */
+	-o-transform: rotate(310deg);
+	/* Opera */
+	-ms-transform: rotate(310deg);
+	/* IE 9 */
+}
+
+.rotate-311 {
+	transform: rotate(311deg);
+	/* CSS3 */
+	-moz-transform: rotate(311deg);
+	/* Firefox */
+	-webkit-transform: rotate(311deg);
+	/* Webkit */
+	-o-transform: rotate(311deg);
+	/* Opera */
+	-ms-transform: rotate(311deg);
+	/* IE 9 */
+}
+
+.rotate-312 {
+	transform: rotate(312deg);
+	/* CSS3 */
+	-moz-transform: rotate(312deg);
+	/* Firefox */
+	-webkit-transform: rotate(312deg);
+	/* Webkit */
+	-o-transform: rotate(312deg);
+	/* Opera */
+	-ms-transform: rotate(312deg);
+	/* IE 9 */
+}
+
+.rotate-313 {
+	transform: rotate(313deg);
+	/* CSS3 */
+	-moz-transform: rotate(313deg);
+	/* Firefox */
+	-webkit-transform: rotate(313deg);
+	/* Webkit */
+	-o-transform: rotate(313deg);
+	/* Opera */
+	-ms-transform: rotate(313deg);
+	/* IE 9 */
+}
+
+.rotate-314 {
+	transform: rotate(314deg);
+	/* CSS3 */
+	-moz-transform: rotate(314deg);
+	/* Firefox */
+	-webkit-transform: rotate(314deg);
+	/* Webkit */
+	-o-transform: rotate(314deg);
+	/* Opera */
+	-ms-transform: rotate(314deg);
+	/* IE 9 */
+}
+
+.rotate-315 {
+	transform: rotate(315deg);
+	/* CSS3 */
+	-moz-transform: rotate(315deg);
+	/* Firefox */
+	-webkit-transform: rotate(315deg);
+	/* Webkit */
+	-o-transform: rotate(315deg);
+	/* Opera */
+	-ms-transform: rotate(315deg);
+	/* IE 9 */
+}
+
+.rotate-316 {
+	transform: rotate(316deg);
+	/* CSS3 */
+	-moz-transform: rotate(316deg);
+	/* Firefox */
+	-webkit-transform: rotate(316deg);
+	/* Webkit */
+	-o-transform: rotate(316deg);
+	/* Opera */
+	-ms-transform: rotate(316deg);
+	/* IE 9 */
+}
+
+.rotate-317 {
+	transform: rotate(317deg);
+	/* CSS3 */
+	-moz-transform: rotate(317deg);
+	/* Firefox */
+	-webkit-transform: rotate(317deg);
+	/* Webkit */
+	-o-transform: rotate(317deg);
+	/* Opera */
+	-ms-transform: rotate(317deg);
+	/* IE 9 */
+}
+
+.rotate-318 {
+	transform: rotate(318deg);
+	/* CSS3 */
+	-moz-transform: rotate(318deg);
+	/* Firefox */
+	-webkit-transform: rotate(318deg);
+	/* Webkit */
+	-o-transform: rotate(318deg);
+	/* Opera */
+	-ms-transform: rotate(318deg);
+	/* IE 9 */
+}
+
+.rotate-319 {
+	transform: rotate(319deg);
+	/* CSS3 */
+	-moz-transform: rotate(319deg);
+	/* Firefox */
+	-webkit-transform: rotate(319deg);
+	/* Webkit */
+	-o-transform: rotate(319deg);
+	/* Opera */
+	-ms-transform: rotate(319deg);
+	/* IE 9 */
+}
+
+.rotate-320 {
+	transform: rotate(320deg);
+	/* CSS3 */
+	-moz-transform: rotate(320deg);
+	/* Firefox */
+	-webkit-transform: rotate(320deg);
+	/* Webkit */
+	-o-transform: rotate(320deg);
+	/* Opera */
+	-ms-transform: rotate(320deg);
+	/* IE 9 */
+}
+
+.rotate-321 {
+	transform: rotate(321deg);
+	/* CSS3 */
+	-moz-transform: rotate(321deg);
+	/* Firefox */
+	-webkit-transform: rotate(321deg);
+	/* Webkit */
+	-o-transform: rotate(321deg);
+	/* Opera */
+	-ms-transform: rotate(321deg);
+	/* IE 9 */
+}
+
+.rotate-322 {
+	transform: rotate(322deg);
+	/* CSS3 */
+	-moz-transform: rotate(322deg);
+	/* Firefox */
+	-webkit-transform: rotate(322deg);
+	/* Webkit */
+	-o-transform: rotate(322deg);
+	/* Opera */
+	-ms-transform: rotate(322deg);
+	/* IE 9 */
+}
+
+.rotate-323 {
+	transform: rotate(323deg);
+	/* CSS3 */
+	-moz-transform: rotate(323deg);
+	/* Firefox */
+	-webkit-transform: rotate(323deg);
+	/* Webkit */
+	-o-transform: rotate(323deg);
+	/* Opera */
+	-ms-transform: rotate(323deg);
+	/* IE 9 */
+}
+
+.rotate-324 {
+	transform: rotate(324deg);
+	/* CSS3 */
+	-moz-transform: rotate(324deg);
+	/* Firefox */
+	-webkit-transform: rotate(324deg);
+	/* Webkit */
+	-o-transform: rotate(324deg);
+	/* Opera */
+	-ms-transform: rotate(324deg);
+	/* IE 9 */
+}
+
+.rotate-325 {
+	transform: rotate(325deg);
+	/* CSS3 */
+	-moz-transform: rotate(325deg);
+	/* Firefox */
+	-webkit-transform: rotate(325deg);
+	/* Webkit */
+	-o-transform: rotate(325deg);
+	/* Opera */
+	-ms-transform: rotate(325deg);
+	/* IE 9 */
+}
+
+.rotate-326 {
+	transform: rotate(326deg);
+	/* CSS3 */
+	-moz-transform: rotate(326deg);
+	/* Firefox */
+	-webkit-transform: rotate(326deg);
+	/* Webkit */
+	-o-transform: rotate(326deg);
+	/* Opera */
+	-ms-transform: rotate(326deg);
+	/* IE 9 */
+}
+
+.rotate-327 {
+	transform: rotate(327deg);
+	/* CSS3 */
+	-moz-transform: rotate(327deg);
+	/* Firefox */
+	-webkit-transform: rotate(327deg);
+	/* Webkit */
+	-o-transform: rotate(327deg);
+	/* Opera */
+	-ms-transform: rotate(327deg);
+	/* IE 9 */
+}
+
+.rotate-328 {
+	transform: rotate(328deg);
+	/* CSS3 */
+	-moz-transform: rotate(328deg);
+	/* Firefox */
+	-webkit-transform: rotate(328deg);
+	/* Webkit */
+	-o-transform: rotate(328deg);
+	/* Opera */
+	-ms-transform: rotate(328deg);
+	/* IE 9 */
+}
+
+.rotate-329 {
+	transform: rotate(329deg);
+	/* CSS3 */
+	-moz-transform: rotate(329deg);
+	/* Firefox */
+	-webkit-transform: rotate(329deg);
+	/* Webkit */
+	-o-transform: rotate(329deg);
+	/* Opera */
+	-ms-transform: rotate(329deg);
+	/* IE 9 */
+}
+
+.rotate-330 {
+	transform: rotate(330deg);
+	/* CSS3 */
+	-moz-transform: rotate(330deg);
+	/* Firefox */
+	-webkit-transform: rotate(330deg);
+	/* Webkit */
+	-o-transform: rotate(330deg);
+	/* Opera */
+	-ms-transform: rotate(330deg);
+	/* IE 9 */
+}
+
+.rotate-331 {
+	transform: rotate(331deg);
+	/* CSS3 */
+	-moz-transform: rotate(331deg);
+	/* Firefox */
+	-webkit-transform: rotate(331deg);
+	/* Webkit */
+	-o-transform: rotate(331deg);
+	/* Opera */
+	-ms-transform: rotate(331deg);
+	/* IE 9 */
+}
+
+.rotate-332 {
+	transform: rotate(332deg);
+	/* CSS3 */
+	-moz-transform: rotate(332deg);
+	/* Firefox */
+	-webkit-transform: rotate(332deg);
+	/* Webkit */
+	-o-transform: rotate(332deg);
+	/* Opera */
+	-ms-transform: rotate(332deg);
+	/* IE 9 */
+}
+
+.rotate-333 {
+	transform: rotate(333deg);
+	/* CSS3 */
+	-moz-transform: rotate(333deg);
+	/* Firefox */
+	-webkit-transform: rotate(333deg);
+	/* Webkit */
+	-o-transform: rotate(333deg);
+	/* Opera */
+	-ms-transform: rotate(333deg);
+	/* IE 9 */
+}
+
+.rotate-334 {
+	transform: rotate(334deg);
+	/* CSS3 */
+	-moz-transform: rotate(334deg);
+	/* Firefox */
+	-webkit-transform: rotate(334deg);
+	/* Webkit */
+	-o-transform: rotate(334deg);
+	/* Opera */
+	-ms-transform: rotate(334deg);
+	/* IE 9 */
+}
+
+.rotate-335 {
+	transform: rotate(335deg);
+	/* CSS3 */
+	-moz-transform: rotate(335deg);
+	/* Firefox */
+	-webkit-transform: rotate(335deg);
+	/* Webkit */
+	-o-transform: rotate(335deg);
+	/* Opera */
+	-ms-transform: rotate(335deg);
+	/* IE 9 */
+}
+
+.rotate-336 {
+	transform: rotate(336deg);
+	/* CSS3 */
+	-moz-transform: rotate(336deg);
+	/* Firefox */
+	-webkit-transform: rotate(336deg);
+	/* Webkit */
+	-o-transform: rotate(336deg);
+	/* Opera */
+	-ms-transform: rotate(336deg);
+	/* IE 9 */
+}
+
+.rotate-337 {
+	transform: rotate(337deg);
+	/* CSS3 */
+	-moz-transform: rotate(337deg);
+	/* Firefox */
+	-webkit-transform: rotate(337deg);
+	/* Webkit */
+	-o-transform: rotate(337deg);
+	/* Opera */
+	-ms-transform: rotate(337deg);
+	/* IE 9 */
+}
+
+.rotate-338 {
+	transform: rotate(338deg);
+	/* CSS3 */
+	-moz-transform: rotate(338deg);
+	/* Firefox */
+	-webkit-transform: rotate(338deg);
+	/* Webkit */
+	-o-transform: rotate(338deg);
+	/* Opera */
+	-ms-transform: rotate(338deg);
+	/* IE 9 */
+}
+
+.rotate-339 {
+	transform: rotate(339deg);
+	/* CSS3 */
+	-moz-transform: rotate(339deg);
+	/* Firefox */
+	-webkit-transform: rotate(339deg);
+	/* Webkit */
+	-o-transform: rotate(339deg);
+	/* Opera */
+	-ms-transform: rotate(339deg);
+	/* IE 9 */
+}
+
+.rotate-340 {
+	transform: rotate(340deg);
+	/* CSS3 */
+	-moz-transform: rotate(340deg);
+	/* Firefox */
+	-webkit-transform: rotate(340deg);
+	/* Webkit */
+	-o-transform: rotate(340deg);
+	/* Opera */
+	-ms-transform: rotate(340deg);
+	/* IE 9 */
+}
+
+.rotate-341 {
+	transform: rotate(341deg);
+	/* CSS3 */
+	-moz-transform: rotate(341deg);
+	/* Firefox */
+	-webkit-transform: rotate(341deg);
+	/* Webkit */
+	-o-transform: rotate(341deg);
+	/* Opera */
+	-ms-transform: rotate(341deg);
+	/* IE 9 */
+}
+
+.rotate-342 {
+	transform: rotate(342deg);
+	/* CSS3 */
+	-moz-transform: rotate(342deg);
+	/* Firefox */
+	-webkit-transform: rotate(342deg);
+	/* Webkit */
+	-o-transform: rotate(342deg);
+	/* Opera */
+	-ms-transform: rotate(342deg);
+	/* IE 9 */
+}
+
+.rotate-343 {
+	transform: rotate(343deg);
+	/* CSS3 */
+	-moz-transform: rotate(343deg);
+	/* Firefox */
+	-webkit-transform: rotate(343deg);
+	/* Webkit */
+	-o-transform: rotate(343deg);
+	/* Opera */
+	-ms-transform: rotate(343deg);
+	/* IE 9 */
+}
+
+.rotate-344 {
+	transform: rotate(344deg);
+	/* CSS3 */
+	-moz-transform: rotate(344deg);
+	/* Firefox */
+	-webkit-transform: rotate(344deg);
+	/* Webkit */
+	-o-transform: rotate(344deg);
+	/* Opera */
+	-ms-transform: rotate(344deg);
+	/* IE 9 */
+}
+
+.rotate-345 {
+	transform: rotate(345deg);
+	/* CSS3 */
+	-moz-transform: rotate(345deg);
+	/* Firefox */
+	-webkit-transform: rotate(345deg);
+	/* Webkit */
+	-o-transform: rotate(345deg);
+	/* Opera */
+	-ms-transform: rotate(345deg);
+	/* IE 9 */
+}
+
+.rotate-346 {
+	transform: rotate(346deg);
+	/* CSS3 */
+	-moz-transform: rotate(346deg);
+	/* Firefox */
+	-webkit-transform: rotate(346deg);
+	/* Webkit */
+	-o-transform: rotate(346deg);
+	/* Opera */
+	-ms-transform: rotate(346deg);
+	/* IE 9 */
+}
+
+.rotate-347 {
+	transform: rotate(347deg);
+	/* CSS3 */
+	-moz-transform: rotate(347deg);
+	/* Firefox */
+	-webkit-transform: rotate(347deg);
+	/* Webkit */
+	-o-transform: rotate(347deg);
+	/* Opera */
+	-ms-transform: rotate(347deg);
+	/* IE 9 */
+}
+
+.rotate-348 {
+	transform: rotate(348deg);
+	/* CSS3 */
+	-moz-transform: rotate(348deg);
+	/* Firefox */
+	-webkit-transform: rotate(348deg);
+	/* Webkit */
+	-o-transform: rotate(348deg);
+	/* Opera */
+	-ms-transform: rotate(348deg);
+	/* IE 9 */
+}
+
+.rotate-349 {
+	transform: rotate(349deg);
+	/* CSS3 */
+	-moz-transform: rotate(349deg);
+	/* Firefox */
+	-webkit-transform: rotate(349deg);
+	/* Webkit */
+	-o-transform: rotate(349deg);
+	/* Opera */
+	-ms-transform: rotate(349deg);
+	/* IE 9 */
+}
+
+.rotate-350 {
+	transform: rotate(350deg);
+	/* CSS3 */
+	-moz-transform: rotate(350deg);
+	/* Firefox */
+	-webkit-transform: rotate(350deg);
+	/* Webkit */
+	-o-transform: rotate(350deg);
+	/* Opera */
+	-ms-transform: rotate(350deg);
+	/* IE 9 */
+}
+
+.rotate-351 {
+	transform: rotate(351deg);
+	/* CSS3 */
+	-moz-transform: rotate(351deg);
+	/* Firefox */
+	-webkit-transform: rotate(351deg);
+	/* Webkit */
+	-o-transform: rotate(351deg);
+	/* Opera */
+	-ms-transform: rotate(351deg);
+	/* IE 9 */
+}
+
+.rotate-352 {
+	transform: rotate(352deg);
+	/* CSS3 */
+	-moz-transform: rotate(352deg);
+	/* Firefox */
+	-webkit-transform: rotate(352deg);
+	/* Webkit */
+	-o-transform: rotate(352deg);
+	/* Opera */
+	-ms-transform: rotate(352deg);
+	/* IE 9 */
+}
+
+.rotate-353 {
+	transform: rotate(353deg);
+	/* CSS3 */
+	-moz-transform: rotate(353deg);
+	/* Firefox */
+	-webkit-transform: rotate(353deg);
+	/* Webkit */
+	-o-transform: rotate(353deg);
+	/* Opera */
+	-ms-transform: rotate(353deg);
+	/* IE 9 */
+}
+
+.rotate-354 {
+	transform: rotate(354deg);
+	/* CSS3 */
+	-moz-transform: rotate(354deg);
+	/* Firefox */
+	-webkit-transform: rotate(354deg);
+	/* Webkit */
+	-o-transform: rotate(354deg);
+	/* Opera */
+	-ms-transform: rotate(354deg);
+	/* IE 9 */
+}
+
+.rotate-355 {
+	transform: rotate(355deg);
+	/* CSS3 */
+	-moz-transform: rotate(355deg);
+	/* Firefox */
+	-webkit-transform: rotate(355deg);
+	/* Webkit */
+	-o-transform: rotate(355deg);
+	/* Opera */
+	-ms-transform: rotate(355deg);
+	/* IE 9 */
+}
+
+.rotate-356 {
+	transform: rotate(356deg);
+	/* CSS3 */
+	-moz-transform: rotate(356deg);
+	/* Firefox */
+	-webkit-transform: rotate(356deg);
+	/* Webkit */
+	-o-transform: rotate(356deg);
+	/* Opera */
+	-ms-transform: rotate(356deg);
+	/* IE 9 */
+}
+
+.rotate-357 {
+	transform: rotate(357deg);
+	/* CSS3 */
+	-moz-transform: rotate(357deg);
+	/* Firefox */
+	-webkit-transform: rotate(357deg);
+	/* Webkit */
+	-o-transform: rotate(357deg);
+	/* Opera */
+	-ms-transform: rotate(357deg);
+	/* IE 9 */
+}
+
+.rotate-358 {
+	transform: rotate(358deg);
+	/* CSS3 */
+	-moz-transform: rotate(358deg);
+	/* Firefox */
+	-webkit-transform: rotate(358deg);
+	/* Webkit */
+	-o-transform: rotate(358deg);
+	/* Opera */
+	-ms-transform: rotate(358deg);
+	/* IE 9 */
+}
+
+.rotate-359 {
+	transform: rotate(359deg);
+	/* CSS3 */
+	-moz-transform: rotate(359deg);
+	/* Firefox */
+	-webkit-transform: rotate(359deg);
+	/* Webkit */
+	-o-transform: rotate(359deg);
+	/* Opera */
+	-ms-transform: rotate(359deg);
+	/* IE 9 */
+}
