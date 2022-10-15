@@ -166,7 +166,7 @@ const VirtualizedGrid = ({
     // if (searchTextObj)
     //   data.filter(item => item.name != id);
     if (sortBy)
-      data.sort(sort_by_function(sortBy.key, sortBy.order == "asc" ? false : true, (a) => a));
+      data && data.sort(sort_by_function(sortBy.key, sortBy.order == "asc" ? false : true, (a) => a));
 
     if (data) {
       setTempId({ list: data })

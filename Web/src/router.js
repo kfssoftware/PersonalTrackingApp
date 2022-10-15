@@ -3,7 +3,6 @@ import { Route, Redirect, Switch } from 'react-router-dom'
 import { ConnectedRouter } from 'connected-react-router'
 import { CSSTransition, SwitchTransition } from 'react-transition-group'
 import { connect } from 'react-redux'
-
 import Layout from 'layouts'
 
 const routes = [

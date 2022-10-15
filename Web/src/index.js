@@ -3,15 +3,13 @@ import './components/kit/vendors/antd/themes/default.less' // default theme antd
 import './components/kit/vendors/antd/themes/dark.less' // dark theme antd components
 import './global.scss' // app & third-party component styles
 import 'react-base-table/styles.css'
-
 import moment from 'moment';
 import 'moment/locale/tr';
 import locale from 'antd/lib/locale/en_US';
-
-import React from 'react'
+import React, { StrictMode } from 'react'
 import ReactDOM from 'react-dom'
 import { createHashHistory } from 'history'
-import { createStore, applyMiddleware, compose } from 'redux'
+import { legacy_createStore as createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 // import { logger } from 'redux-logger'
 import createSagaMiddleware from 'redux-saga'
@@ -44,17 +42,14 @@ global.roles = new Set();
 const store = createStore(reducers(history), compose(applyMiddleware(...middlewares)))
 sagaMiddleware.run(sagas)
 ReactDOM.render(
-  <Provider store={store}>
-    <LoadApp />
-    <ConfigProvider locale={locale}>
-      <Router history={history} />
-    </ConfigProvider>
-  </Provider>,
+    <Provider store={store}>
+      <LoadApp />
+      <ConfigProvider locale={locale}>
+        <Router history={history} />
+      </ConfigProvider>
+    </Provider>,
   document.getElementById('root'),
 )
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister()
 export { store, history }

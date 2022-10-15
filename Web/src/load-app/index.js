@@ -52,13 +52,11 @@ const loadUserInfo = ({ dispatch, onSuccess }) => {
     } else {
         onSuccess();
     }
-
 }
 
 const LoadApp = ({ }) => {
     const dispatch = useDispatch();
     useEffect(() => {
-
         loadUserInfo({
             dispatch,
             onSuccess: () => {
@@ -71,7 +69,5 @@ const LoadApp = ({ }) => {
     }, []);
     return null;
 }
-
-
 
 export default LoadApp;
